@@ -469,14 +469,51 @@ body {
     gap: 0 !important;
   }
   .mockup-label { display: none; }
+  .dynamic-island { display: none; }
+
   .phone-frame {
     width: 100vw !important;
     height: 100vh !important;
     border-radius: 0 !important;
     border: none !important;
     box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
+
+  /* Status bar stays at top, natural height */
+  .status-bar { flex-shrink: 0; }
+
+  /* Screen fills remaining space, becomes a flex column */
   .screen {
-    height: calc(100vh - var(--status-bar)) !important;
+    flex: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  /* Content area scrolls */
+  .screen-inner {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Bottom nav stays fixed at bottom via flex, not absolute */
+  .bottom-nav {
+    position: relative !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Sticky app headers */
+  .routine-header,
+  .comm-header,
+  .ci-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
   }
 }
