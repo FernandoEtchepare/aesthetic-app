@@ -468,47 +468,40 @@ body {
     justify-content: flex-start !important;
     gap: 0 !important;
   }
+
   .mockup-label { display: none; }
   .dynamic-island { display: none; }
+  .status-bar { display: none; }
 
   .phone-frame {
     width: 100vw !important;
-    height: 100vh !important;
+    height: 100dvh !important;
     border-radius: 0 !important;
     border: none !important;
     box-shadow: none !important;
-    display: flex !important;
-    flex-direction: column !important;
   }
 
-  /* Status bar stays at top, natural height */
-  .status-bar { flex-shrink: 0; }
-
-  /* Screen fills remaining space, becomes a flex column */
+  /* Screen fills full height and scrolls */
   .screen {
-    flex: 1 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
+    height: 100dvh !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    /* Extra space for fixed bottom nav + browser toolbar */
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
   }
 
-  /* Content area scrolls */
-  .screen-inner {
-    flex: 1 !important;
-    overflow-y: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  /* Bottom nav stays fixed at bottom via flex, not absolute */
+  /* Bottom nav: truly fixed to viewport */
   .bottom-nav {
-    position: relative !important;
-    flex-shrink: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+    height: auto !important;
   }
 
-  /* Sticky app headers */
+  /* Sticky app headers inside the scrolling screen */
   .routine-header,
   .comm-header,
   .ci-header {
