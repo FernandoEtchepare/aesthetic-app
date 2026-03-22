@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<title>Mockup — Check-in (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.s-icon svg { color: var(--gold); opacity: 0.6; transition: opacity 0.2s; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { opacity: 1; }
+.ci-layout { display: grid; grid-template-columns: 1fr 320px; gap: 24px; padding: 24px; }
+.left-col { display: flex; flex-direction: column; gap: 18px; }
+.right-col { display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 20px; }
+.card-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+/* Hero */
+.checkin-hero {
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.checkin-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 28px);
+  opacity: 0.025;
+}
+.ch-left {}
+.ch-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.ch-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--white); margin-bottom: 6px; }
+.ch-gps { font-size: 0.58rem; color: var(--white-faint); }
+.ch-gps span { color: var(--gold); }
+
+/* Miembros */
+.member-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(245,240,232,0.04); }
+.member-row:last-child { border-bottom: none; }
+.mr-av { width: 36px; height: 36px; border-radius: 50%; background: var(--black-soft); border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-family: var(--font-display); color: var(--gold); position: relative; flex-shrink: 0; }
+.mr-dot { width: 9px; height: 9px; border-radius: 50%; background: #4a9e6b; border: 2px solid var(--black-card); position: absolute; bottom: 0; right: 0; }
+.mr-name { font-size: 0.7rem; color: var(--white); flex: 1; }
+.mr-time { font-size: 0.58rem; color: var(--white-faint); }
+.mr-dur { font-size: 0.6rem; color: var(--gold); font-weight: 600; }
+
+/* Racha */
+.streak-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.sg-item { background: rgba(245,240,232,0.03); border: 1px solid rgba(245,240,232,0.05); border-radius: 10px; padding: 12px; text-align: center; }
+.sg-num { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+.sg-lbl { font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-faint); margin-top: 4px; }
+.week-row { display: flex; gap: 8px; justify-content: space-between; }
+.wd { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
+.wd-circle { width: 28px; height: 28px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); }
+.wd-circle.done { background: var(--gold); border-color: var(--gold); }
+.wd-circle.today { background: rgba(201,168,76,0.25); border: 2px solid var(--gold); }
+.wd-lbl { font-size: 0.5rem; color: var(--white-faint); }
+
+/* Historial */
+.hist-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(245,240,232,0.04); }
+.hist-row:last-child { border-bottom: none; }
+.hr-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+.hr-date { font-size: 0.68rem; color: var(--white); font-weight: 500; }
+.hr-meta { font-size: 0.57rem; color: var(--white-faint); margin-top: 2px; }
+.hr-dur { font-size: 0.65rem; color: var(--gold); font-weight: 600; }
+
+/* Concurrencia */
+.conc-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; margin: 12px 0 6px; }
+.cb { flex: 1; border-radius: 3px 3px 0 0; background: rgba(201,168,76,0.12); min-height: 4px; }
+.cb.peak { background: var(--gold); }
+.cb.now { background: rgba(201,168,76,0.45); border: 1px solid var(--gold); }
+.conc-labels { display: flex; justify-content: space-between; }
+.cl { font-size: 0.5rem; color: var(--white-faint); }
+.conc-legend { display: flex; gap: 16px; margin-top: 10px; }
+.cli { display: flex; align-items: center; gap: 5px; font-size: 0.55rem; color: var(--white-faint); }
+.cli-dot { width: 9px; height: 9px; border-radius: 2px; }
+
+/* Logros */
+.badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.badge { background: rgba(245,240,232,0.02); border: 1px solid rgba(245,240,232,0.06); border-radius: 10px; padding: 12px; display: flex; gap: 10px; align-items: center; }
+.badge.earned { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+.b-icon { font-size: 1.3rem; }
+.b-name { font-size: 0.62rem; font-weight: 600; color: var(--white); }
+.b-desc { font-size: 0.52rem; color: var(--white-faint); margin-top: 2px; }
+.badge:not(.earned) { opacity: 0.35; }
+</style>
+</head>
+<body>
+<div class="mockup-label">07 — Check-in · Desktop · 1280×800</div>
+<div class="desktop-frame">
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;"><img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;"></div>
+    <div class="sidebar-nav">
+      <a href="02-rutina.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+        <span class="s-text">Mi rutina</span>
+      </div></a>
+      <a href="05-comunidad.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-3.3-2.7-6-6-6"/></svg></span>
+        <span class="s-text">Comunidad</span>
+      </div></a>
+      <a href="07-checkin.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2"/></svg></span>
+        <span class="s-text">Check-in</span>
+      </div></a>
+      <a href="04-perfil.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
+        <span class="s-text">Mi perfil</span>
+      </div></a>
+      <a href="06-feedback.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Feedback</span>
+      </div></a>
+    </div>
+  </div>
+
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div><div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white)">Check<em style="font-style:italic;color:var(--gold)">-in</em></div></div>
+      <div style="font-size:0.62rem;color:#4a9e6b;background:rgba(74,158,107,0.1);border:1px solid rgba(74,158,107,0.25);border-radius:20px;padding:5px 12px;">● 8 miembros en el gym ahora</div>
+    </div>
+
+    <div class="ci-layout">
+      <div class="left-col">
+
+        <!-- HERO -->
+        <div class="checkin-hero">
+          <div class="ch-left">
+            <div class="ch-label">Tu ubicación</div>
+            <div class="ch-title">¿Estás en el gym?</div>
+            <div class="ch-gps">📡 GPS detectado · <span>Aesthetic Gym Mar del Plata</span></div>
+          </div>
+          <button class="btn-gold" style="width:auto;padding:16px 32px;font-size:0.65rem;white-space:nowrap;">Hacer check-in ahora</button>
+        </div>
+
+        <!-- HISTORIAL -->
+        <div class="card">
+          <div class="card-title">Mis últimas visitas</div>
+          <div class="hist-row">
+            <div class="hr-icon">📍</div>
+            <div style="flex:1"><div class="hr-date">Jueves 20 de marzo</div><div class="hr-meta">Entrada 18:32 · Espalda + Bíceps</div></div>
+            <div class="hr-dur">74 min</div>
+          </div>
+          <div class="hist-row">
+            <div class="hr-icon">📍</div>
+            <div style="flex:1"><div class="hr-date">Miércoles 19 de marzo</div><div class="hr-meta">Entrada 07:15 · Piernas</div></div>
+            <div class="hr-dur">68 min</div>
+          </div>
+          <div class="hist-row">
+            <div class="hr-icon">📍</div>
+            <div style="flex:1"><div class="hr-date">Martes 18 de marzo</div><div class="hr-meta">Entrada 18:50 · Pecho + Tríceps</div></div>
+            <div class="hr-dur">55 min</div>
+          </div>
+          <div class="hist-row">
+            <div class="hr-icon">📍</div>
+            <div style="flex:1"><div class="hr-date">Lunes 17 de marzo</div><div class="hr-meta">Entrada 07:00 · Hombros</div></div>
+            <div class="hr-dur">60 min</div>
+          </div>
+          <div class="hist-row">
+            <div class="hr-icon">📍</div>
+            <div style="flex:1"><div class="hr-date">Viernes 14 de marzo</div><div class="hr-meta">Entrada 19:10 · Full body</div></div>
+            <div class="hr-dur">80 min</div>
+          </div>
+        </div>
+
+        <!-- CONCURRENCIA -->
+        <div class="card">
+          <div class="card-title">Concurrencia hoy</div>
+          <div class="conc-bars">
+            <div class="cb" style="height:20%"></div>
+            <div class="cb" style="height:30%"></div>
+            <div class="cb" style="height:45%"></div>
+            <div class="cb peak" style="height:100%"></div>
+            <div class="cb peak" style="height:88%"></div>
+            <div class="cb" style="height:55%"></div>
+            <div class="cb now" style="height:52%"></div>
+            <div class="cb" style="height:38%"></div>
+            <div class="cb peak" style="height:82%"></div>
+            <div class="cb peak" style="height:95%"></div>
+            <div class="cb" style="height:48%"></div>
+            <div class="cb" style="height:18%"></div>
+          </div>
+          <div class="conc-labels">
+            <span class="cl">7am</span><span class="cl">9am</span><span class="cl">11am</span><span class="cl">1pm</span><span class="cl">3pm</span><span class="cl">5pm</span><span class="cl">7pm</span><span class="cl">9pm</span>
+          </div>
+          <div class="conc-legend">
+            <div class="cli"><div class="cli-dot" style="background:var(--gold)"></div>Pico de concurrencia</div>
+            <div class="cli"><div class="cli-dot" style="background:rgba(201,168,76,0.45);border:1px solid var(--gold)"></div>Ahora (3pm)</div>
+            <div class="cli"><div class="cli-dot" style="background:rgba(201,168,76,0.12)"></div>Tranquilo</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="right-col">
+
+        <!-- RACHA -->
+        <div class="card">
+          <div class="card-title">Mi racha</div>
+          <div class="streak-grid">
+            <div class="sg-item"><div class="sg-num">18</div><div class="sg-lbl">Racha actual</div></div>
+            <div class="sg-item"><div class="sg-num">42</div><div class="sg-lbl">Este mes</div></div>
+            <div class="sg-item"><div class="sg-num">96%</div><div class="sg-lbl">Asistencia</div></div>
+          </div>
+          <div class="week-row">
+            <div class="wd"><div class="wd-circle done"></div><div class="wd-lbl">Lun</div></div>
+            <div class="wd"><div class="wd-circle done"></div><div class="wd-lbl">Mar</div></div>
+            <div class="wd"><div class="wd-circle done"></div><div class="wd-lbl">Mié</div></div>
+            <div class="wd"><div class="wd-circle done"></div><div class="wd-lbl">Jue</div></div>
+            <div class="wd"><div class="wd-circle today"></div><div class="wd-lbl">Vie</div></div>
+            <div class="wd"><div class="wd-circle"></div><div class="wd-lbl">Sáb</div></div>
+            <div class="wd"><div class="wd-circle"></div><div class="wd-lbl">Dom</div></div>
+          </div>
+        </div>
+
+        <!-- MIEMBROS AHORA -->
+        <div class="card">
+          <div class="card-title">En el gym ahora · 8</div>
+          <div class="member-row"><div class="mr-av">ML<div class="mr-dot"></div></div><div class="mr-name">Martín López</div><div class="mr-time">Hace 12 min</div></div>
+          <div class="member-row"><div class="mr-av">JP<div class="mr-dot"></div></div><div class="mr-name">Juan Pérez</div><div class="mr-time">Hace 25 min</div></div>
+          <div class="member-row"><div class="mr-av">SR<div class="mr-dot"></div></div><div class="mr-name">Sofía Rodríguez</div><div class="mr-time">Hace 40 min</div></div>
+          <div class="member-row"><div class="mr-av">CG<div class="mr-dot"></div></div><div class="mr-name">Carlos García</div><div class="mr-time">Hace 1h</div></div>
+          <div class="member-row"><div class="mr-av" style="font-size:0.55rem;color:var(--white-faint)">+4</div><div class="mr-name" style="color:var(--white-faint);font-size:0.62rem">4 miembros más</div></div>
+        </div>
+
+        <!-- LOGROS -->
+        <div class="card">
+          <div class="card-title">Logros</div>
+          <div class="badges-grid">
+            <div class="badge earned"><div class="b-icon">🏅</div><div><div class="b-name">Racha 7 días</div><div class="b-desc">7 días seguidos</div></div></div>
+            <div class="badge earned"><div class="b-icon">⚡</div><div><div class="b-name">Madrugador</div><div class="b-desc">10× antes de 8am</div></div></div>
+            <div class="badge earned"><div class="b-icon">🔥</div><div><div class="b-name">Racha 30 días</div><div class="b-desc">Un mes completo</div></div></div>
+            <div class="badge"><div class="b-icon">👑</div><div><div class="b-name">Racha 60 días</div><div class="b-desc">El próximo nivel</div></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

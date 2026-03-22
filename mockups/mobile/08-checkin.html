@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Check-in (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { background: var(--black); padding: 48px 24px; }
+.screen-inner {
+  padding: 0 0 calc(var(--bottom-nav) + 16px);
+  overflow-y: auto;
+  height: 100%;
+  background: var(--black);
+}
+.ci-header { padding: 24px 20px 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.ci-header-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--white); }
+.ci-header-title em { font-style: italic; color: var(--gold); }
+.section-pad { padding: 0 20px; margin-bottom: 20px; }
+
+/* Hero check-in */
+.checkin-hero {
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 18px;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.checkin-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 24px);
+  opacity: 0.03;
+}
+.ci-icon-big { font-size: 2.4rem; margin-bottom: 10px; }
+.ci-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); margin-bottom: 6px; }
+.ci-sub { font-size: 0.65rem; color: var(--white-faint); margin-bottom: 18px; line-height: 1.6; }
+.ci-gps { font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; opacity: 0.7; }
+
+/* Miembros ahora */
+.section-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.now-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.now-count-badge { font-size: 0.58rem; background: rgba(74,158,107,0.15); border: 1px solid rgba(74,158,107,0.3); color: #4a9e6b; border-radius: 20px; padding: 3px 10px; }
+.members-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+.member-pill { display: flex; align-items: center; gap: 8px; background: var(--black-card); border: 1px solid rgba(245,240,232,0.06); border-radius: 24px; padding: 6px 12px 6px 6px; }
+.mp-av { width: 28px; height: 28px; border-radius: 50%; background: var(--black-soft); border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-family: var(--font-display); color: var(--gold); position: relative; }
+.mp-dot { width: 8px; height: 8px; border-radius: 50%; background: #4a9e6b; border: 1.5px solid var(--black-card); position: absolute; bottom: 0; right: 0; }
+.mp-name { font-size: 0.62rem; color: var(--white-dim); }
+
+/* Racha */
+.streak-card { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 16px; padding: 18px; }
+.streak-row { display: flex; gap: 10px; }
+.streak-stat { flex: 1; text-align: center; background: rgba(245,240,232,0.03); border-radius: 10px; padding: 12px 8px; }
+.streak-num { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); line-height: 1; }
+.streak-lbl { font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white-faint); margin-top: 4px; }
+.week-dots { display: flex; justify-content: space-between; margin-top: 14px; }
+.wd { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.wd-dot { width: 22px; height: 22px; border-radius: 50%; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.2); }
+.wd-dot.done { background: var(--gold); border-color: var(--gold); }
+.wd-dot.today { background: rgba(201,168,76,0.3); border: 2px solid var(--gold); }
+.wd-lbl { font-size: 0.48rem; color: var(--white-faint); letter-spacing: 0.08em; }
+
+/* Historial */
+.hist-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.04); }
+.hist-item:last-child { border-bottom: none; }
+.hist-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+.hist-info { flex: 1; }
+.hist-date { font-size: 0.68rem; color: var(--white); font-weight: 500; }
+.hist-meta { font-size: 0.57rem; color: var(--white-faint); margin-top: 2px; }
+.hist-dur { font-size: 0.62rem; color: var(--gold); font-weight: 600; }
+
+/* Concurrencia */
+.conc-card { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 16px; padding: 18px; }
+.conc-bars { display: flex; align-items: flex-end; gap: 5px; height: 60px; margin: 14px 0 6px; }
+.cb { flex: 1; border-radius: 3px 3px 0 0; background: rgba(201,168,76,0.15); min-height: 4px; transition: background 0.2s; }
+.cb.peak { background: var(--gold); }
+.cb.now { background: rgba(201,168,76,0.5); border: 1px solid var(--gold); }
+.conc-labels { display: flex; justify-content: space-between; }
+.cl { font-size: 0.45rem; color: var(--white-faint); }
+.conc-legend { display: flex; gap: 14px; margin-top: 10px; }
+.cl-item { display: flex; align-items: center; gap: 5px; font-size: 0.52rem; color: var(--white-faint); }
+.cl-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+/* Logros */
+.badges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.badge-item { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 14px 12px; display: flex; align-items: center; gap: 10px; }
+.badge-item.earned { border-color: rgba(201,168,76,0.2); background: linear-gradient(135deg, rgba(201,168,76,0.05), var(--black-card)); }
+.badge-icon { font-size: 1.4rem; flex-shrink: 0; }
+.badge-name { font-size: 0.6rem; font-weight: 600; color: var(--white); }
+.badge-desc { font-size: 0.52rem; color: var(--white-faint); margin-top: 2px; }
+.badge-item:not(.earned) { opacity: 0.4; }
+</style>
+</head>
+<body>
+<div class="mockup-label">08 — Check-in · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="phone-notch"></div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <div class="ci-header">
+        <div class="ci-header-title">Check<em>-in</em></div>
+        <div style="font-size:0.58rem;color:#4a9e6b;background:rgba(74,158,107,0.1);border:1px solid rgba(74,158,107,0.25);border-radius:20px;padding:4px 10px;">8 en el gym</div>
+      </div>
+
+      <!-- HERO CHECK-IN -->
+      <div class="section-pad">
+        <div class="checkin-hero">
+          <div class="ci-icon-big">📍</div>
+          <div class="ci-title">¿Estás en el gym?</div>
+          <div class="ci-sub">Registrá tu presencia y conectá con quienes están entrenando ahora mismo.</div>
+          <div class="ci-gps">📡 GPS detectado · Aesthetic Gym Mar del Plata</div>
+          <button class="btn-gold" style="font-size:0.65rem;padding:14px;margin-top:12px;">Hacer check-in ahora</button>
+        </div>
+      </div>
+
+      <!-- MIEMBROS AHORA -->
+      <div class="section-pad">
+        <div class="streak-card">
+          <div class="now-bar">
+            <div class="section-title" style="margin-bottom:0">En el gym ahora</div>
+            <div class="now-count-badge">● 8 activos</div>
+          </div>
+          <div style="height:12px"></div>
+          <div class="members-grid">
+            <div class="member-pill"><div class="mp-av">ML<div class="mp-dot"></div></div><span class="mp-name">Martín L.</span></div>
+            <div class="member-pill"><div class="mp-av">JP<div class="mp-dot"></div></div><span class="mp-name">Juan P.</span></div>
+            <div class="member-pill"><div class="mp-av">SR<div class="mp-dot"></div></div><span class="mp-name">Sofía R.</span></div>
+            <div class="member-pill"><div class="mp-av">CG<div class="mp-dot"></div></div><span class="mp-name">Carlos G.</span></div>
+            <div class="member-pill"><div class="mp-av">TM<div class="mp-dot"></div></div><span class="mp-name">Tomás M.</span></div>
+            <div class="member-pill" style="background:transparent;border-style:dashed;"><div class="mp-av" style="border-style:dashed;color:var(--white-faint)">+3</div><span class="mp-name" style="color:var(--white-faint)">más</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RACHA -->
+      <div class="section-pad">
+        <div class="streak-card">
+          <div class="section-title">Mi racha</div>
+          <div class="streak-row">
+            <div class="streak-stat">
+              <div class="streak-num">18</div>
+              <div class="streak-lbl">Racha actual</div>
+            </div>
+            <div class="streak-stat">
+              <div class="streak-num">42</div>
+              <div class="streak-lbl">Este mes</div>
+            </div>
+            <div class="streak-stat">
+              <div class="streak-num">96%</div>
+              <div class="streak-lbl">Asistencia</div>
+            </div>
+          </div>
+          <div class="week-dots">
+            <div class="wd"><div class="wd-dot done"></div><div class="wd-lbl">L</div></div>
+            <div class="wd"><div class="wd-dot done"></div><div class="wd-lbl">M</div></div>
+            <div class="wd"><div class="wd-dot done"></div><div class="wd-lbl">X</div></div>
+            <div class="wd"><div class="wd-dot done"></div><div class="wd-lbl">J</div></div>
+            <div class="wd"><div class="wd-dot today"></div><div class="wd-lbl">V</div></div>
+            <div class="wd"><div class="wd-dot"></div><div class="wd-lbl">S</div></div>
+            <div class="wd"><div class="wd-dot"></div><div class="wd-lbl">D</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCURRENCIA -->
+      <div class="section-pad">
+        <div class="conc-card">
+          <div class="section-title">Concurrencia hoy</div>
+          <div class="conc-bars">
+            <div class="cb" style="height:20%"></div>
+            <div class="cb" style="height:30%"></div>
+            <div class="cb" style="height:45%"></div>
+            <div class="cb peak" style="height:100%"></div>
+            <div class="cb peak" style="height:90%"></div>
+            <div class="cb" style="height:60%"></div>
+            <div class="cb now" style="height:55%"></div>
+            <div class="cb" style="height:40%"></div>
+            <div class="cb peak" style="height:85%"></div>
+            <div class="cb peak" style="height:95%"></div>
+            <div class="cb" style="height:50%"></div>
+            <div class="cb" style="height:20%"></div>
+          </div>
+          <div class="conc-labels">
+            <span class="cl">7am</span><span class="cl">9am</span><span class="cl">11am</span><span class="cl">1pm</span><span class="cl">3pm</span><span class="cl">5pm</span><span class="cl">8pm</span>
+          </div>
+          <div class="conc-legend">
+            <div class="cl-item"><div class="cl-dot" style="background:var(--gold)"></div>Pico</div>
+            <div class="cl-item"><div class="cl-dot" style="background:rgba(201,168,76,0.5);border:1px solid var(--gold)"></div>Ahora</div>
+            <div class="cl-item"><div class="cl-dot" style="background:rgba(201,168,76,0.15)"></div>Tranquilo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORIAL -->
+      <div class="section-pad">
+        <div class="streak-card">
+          <div class="section-title">Mis últimas visitas</div>
+          <div class="hist-item">
+            <div class="hist-icon">📍</div>
+            <div class="hist-info"><div class="hist-date">Jueves 20 Mar</div><div class="hist-meta">Entrada 18:32 · Espalda + Bíceps</div></div>
+            <div class="hist-dur">74 min</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-icon">📍</div>
+            <div class="hist-info"><div class="hist-date">Miércoles 19 Mar</div><div class="hist-meta">Entrada 07:15 · Piernas</div></div>
+            <div class="hist-dur">68 min</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-icon">📍</div>
+            <div class="hist-info"><div class="hist-date">Martes 18 Mar</div><div class="hist-meta">Entrada 18:50 · Pecho + Tríceps</div></div>
+            <div class="hist-dur">55 min</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-icon">📍</div>
+            <div class="hist-info"><div class="hist-date">Lunes 17 Mar</div><div class="hist-meta">Entrada 07:00 · Hombros</div></div>
+            <div class="hist-dur">60 min</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGROS -->
+      <div class="section-pad">
+        <div class="section-title">Logros de asistencia</div>
+        <div class="badges-grid">
+          <div class="badge-item earned">
+            <div class="badge-icon">🏅</div>
+            <div><div class="badge-name">Racha 7 días</div><div class="badge-desc">7 visitas consecutivas</div></div>
+          </div>
+          <div class="badge-item earned">
+            <div class="badge-icon">⚡</div>
+            <div><div class="badge-name">Madrugador</div><div class="badge-desc">10 entradas antes de 8am</div></div>
+          </div>
+          <div class="badge-item earned">
+            <div class="badge-icon">🔥</div>
+            <div><div class="badge-name">Racha 30 días</div><div class="badge-desc">Un mes sin fallar</div></div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">👑</div>
+            <div><div class="badge-name">Racha 60 días</div><div class="badge-desc">El próximo nivel</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+      <a href="03-rutina.html" style="display:contents;text-decoration:none;"><div class="nav-item">
+        <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="nav-text">Rutina</div>
+      </div></a>
+      <a href="06-comunidad.html" style="display:contents;text-decoration:none;"><div class="nav-item">
+        <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-3.3-2.7-6-6-6"/></svg></div>
+        <div class="nav-text">Comunidad</div>
+      </div></a>
+      <a href="08-checkin.html" style="display:contents;text-decoration:none;"><div class="nav-item active">
+        <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2"/></svg></div>
+        <div class="nav-text">Check-in</div>
+      </div></a>
+      <a href="05-perfil.html" style="display:contents;text-decoration:none;"><div class="nav-item">
+        <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+        <div class="nav-text">Perfil</div>
+      </div></a>
+      <a href="07-feedback.html" style="display:contents;text-decoration:none;"><div class="nav-item">
+        <div class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="nav-text">Feedback</div>
+      </div></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
