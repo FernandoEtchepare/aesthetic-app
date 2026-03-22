@@ -8,13 +8,28 @@
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
 body { background: var(--black); padding: 48px 24px; }
-.screen-inner {
-  padding: 0 0 calc(var(--bottom-nav) + 16px);
-  overflow-y: auto;
-  height: 100%;
-  background: var(--black);
+
+/* Flex layout so header stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
 }
-.ci-header { padding: 24px 20px 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+.screen-inner {
+  flex: 1;
+  min-height: 0;
+  padding: 0 0 calc(var(--bottom-nav) + 16px);
+  background: var(--black);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.screen-inner::-webkit-scrollbar { display: none; }
+
+.ci-header {
+  flex-shrink: 0; padding: 24px 20px 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .ci-header-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--white); }
 .ci-header-title em { font-style: italic; color: var(--gold); }
 .section-pad { padding: 0 20px; margin-bottom: 20px; }
@@ -92,19 +107,67 @@ body { background: var(--black); padding: 48px 24px; }
 .badge-name { font-size: 0.6rem; font-weight: 600; color: var(--white); }
 .badge-desc { font-size: 0.52rem; color: var(--white-faint); margin-top: 2px; }
 .badge-item:not(.earned) { opacity: 0.4; }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
 <div class="mockup-label">08 — Check-in · Mobile · 390×844</div>
 <div class="phone-frame">
-  <div class="phone-notch"></div>
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <div class="ci-header">
-        <div class="ci-header-title">Check<em>-in</em></div>
-        <div style="font-size:0.58rem;color:#4a9e6b;background:rgba(74,158,107,0.1);border:1px solid rgba(74,158,107,0.25);border-radius:20px;padding:4px 10px;">8 en el gym</div>
-      </div>
+    <!-- HEADER — outside scroll container so it never moves -->
+    <div class="ci-header">
+      <div class="ci-header-title">Check<em>-in</em></div>
+      <div style="font-size:0.58rem;color:#4a9e6b;background:rgba(74,158,107,0.1);border:1px solid rgba(74,158,107,0.25);border-radius:20px;padding:4px 10px;">8 en el gym</div>
+    </div>
+
+    <div class="screen-inner">
 
       <!-- HERO CHECK-IN -->
       <div class="section-pad">

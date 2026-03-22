@@ -7,10 +7,27 @@
 <title>Mockup — Perfil (Mobile)</title>
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
+/* Flex layout so hero stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
 .screen-inner {
-  min-height: 100%;
+  flex: 1;
+  min-height: 0;
   background: var(--black);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
   padding-bottom: calc(var(--bottom-nav) + 16px);
+}
+
+.screen-inner::-webkit-scrollbar { display: none; }
+
+.profile-hero {
+  flex-shrink: 0;
 }
 
 .profile-hero {
@@ -222,6 +239,48 @@
   font-size: 1.6rem;
   opacity: 0.6;
 }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -233,43 +292,44 @@
     <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
   </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <!-- HEADER -->
-      <div class="profile-hero">
-        <div class="profile-top">
-          <span class="screen-title">Mi perfil</span>
-          <button class="edit-btn">Editar</button>
+    <!-- HERO — outside scroll container so it never moves -->
+    <div class="profile-hero">
+      <div class="profile-top">
+        <span class="screen-title">Mi perfil</span>
+        <button class="edit-btn">Editar</button>
+      </div>
+      <div class="profile-avatar-area">
+        <div class="big-avatar">
+          FE
+          <div class="avatar-edit">✎</div>
         </div>
-        <div class="profile-avatar-area">
-          <div class="big-avatar">
-            FE
-            <div class="avatar-edit">✎</div>
-          </div>
-          <div class="profile-info">
-            <div class="name">Fernando Etchepare</div>
-            <div class="email">fer@email.com</div>
-            <div class="member-since">
-              <span>★</span>
-              <span>Miembro desde Mar 2026</span>
-            </div>
-          </div>
-        </div>
-        <div class="stats-row">
-          <div class="stat-box">
-            <span class="stat-val">42</span>
-            <span class="stat-lbl">Sesiones</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-val">18</span>
-            <span class="stat-lbl">Racha días</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-val">96%</span>
-            <span class="stat-lbl">Asistencia</span>
+        <div class="profile-info">
+          <div class="name">Fernando Etchepare</div>
+          <div class="email">fer@email.com</div>
+          <div class="member-since">
+            <span>★</span>
+            <span>Miembro desde Mar 2026</span>
           </div>
         </div>
       </div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-val">42</span>
+          <span class="stat-lbl">Sesiones</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">18</span>
+          <span class="stat-lbl">Racha días</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">96%</span>
+          <span class="stat-lbl">Asistencia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-inner">
 
       <!-- MEMBRESÍA -->
       <div class="form-section">

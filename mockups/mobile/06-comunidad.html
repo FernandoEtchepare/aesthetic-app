@@ -7,13 +7,27 @@
 <title>Mockup — Comunidad (Mobile)</title>
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
-.screen-inner {
-  min-height: 100%;
-  background: var(--black);
-  padding-bottom: calc(var(--bottom-nav) + 16px);
+/* Flex layout so header stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
 }
 
+.screen-inner {
+  flex: 1;
+  min-height: 0;
+  background: var(--black);
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.screen-inner::-webkit-scrollbar { display: none; }
+
 .comm-header {
+  flex-shrink: 0;
   padding: 20px 20px 16px;
   background: var(--black-mid);
   border-bottom: 1px solid rgba(201,168,76,0.08);
@@ -263,6 +277,48 @@
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(201,168,76,0.4);
 }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -274,21 +330,22 @@
     <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
   </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <!-- HEADER -->
-      <div class="comm-header">
-        <div class="comm-header-top">
-          <div>
-            <div class="app-section-label">Aesthetic Gym</div>
-            <div class="app-section-title">Comunidad</div>
-          </div>
-          <div class="notif-btn">
-            🔔
-            <div class="notif-dot"></div>
-          </div>
+    <!-- HEADER — outside scroll container so it never moves -->
+    <div class="comm-header">
+      <div class="comm-header-top">
+        <div>
+          <div class="app-section-label">Aesthetic Gym</div>
+          <div class="app-section-title">Comunidad</div>
+        </div>
+        <div class="notif-btn">
+          🔔
+          <div class="notif-dot"></div>
         </div>
       </div>
+    </div>
+
+    <div class="screen-inner">
 
       <div style="height:16px"></div>
 

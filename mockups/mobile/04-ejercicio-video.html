@@ -7,14 +7,28 @@
 <title>Mockup — Ejercicio + Video (Mobile)</title>
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
+/* Flex layout so video player stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
 .screen-inner {
-  min-height: 100%;
+  flex: 1;
+  min-height: 0;
   background: var(--black);
   padding-bottom: calc(var(--bottom-nav) + 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
+
+.screen-inner::-webkit-scrollbar { display: none; }
 
 /* VIDEO PLAYER */
 .video-player {
+  flex-shrink: 0;
   width: 100%;
   height: 230px;
   background: #000;
@@ -250,6 +264,48 @@
   text-transform: uppercase;
   color: var(--white-faint);
 }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -261,27 +317,28 @@
     <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
   </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <!-- VIDEO -->
-      <div class="video-player">
-        <div class="video-bg">
-          <div class="video-pattern"></div>
-          <div class="play-circle">▶</div>
-          <div class="video-label">Ver demostración</div>
-        </div>
-        <div class="video-overlay-top">
-          <a href="03-rutina.html" style="text-decoration:none;"><div class="back-btn">← Volver a rutina</div></a>
-          <div class="video-duration">2:34</div>
-        </div>
-        <div class="video-controls">
-          <div class="video-progress">
-            <div class="video-progress-fill"></div>
-            <div class="video-progress-dot"></div>
-          </div>
-          <div class="video-time">0:54 / 2:34</div>
-        </div>
+    <!-- VIDEO PLAYER — outside scroll container so it never moves -->
+    <div class="video-player">
+      <div class="video-bg">
+        <div class="video-pattern"></div>
+        <div class="play-circle">▶</div>
+        <div class="video-label">Ver demostración</div>
       </div>
+      <div class="video-overlay-top">
+        <a href="03-rutina.html" style="text-decoration:none;"><div class="back-btn">← Volver a rutina</div></a>
+        <div class="video-duration">2:34</div>
+      </div>
+      <div class="video-controls">
+        <div class="video-progress">
+          <div class="video-progress-fill"></div>
+          <div class="video-progress-dot"></div>
+        </div>
+        <div class="video-time">0:54 / 2:34</div>
+      </div>
+    </div>
+
+    <div class="screen-inner">
 
       <!-- CONTENT -->
       <div class="ex-content">

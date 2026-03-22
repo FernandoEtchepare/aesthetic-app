@@ -7,14 +7,28 @@
 <title>Mockup — Rutina del Día (Mobile)</title>
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
+/* Flex layout so header stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
 .screen-inner {
-  min-height: 100%;
+  flex: 1;
+  min-height: 0;
   padding-bottom: calc(var(--bottom-nav) + 16px);
   background: var(--black);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
+
+.screen-inner::-webkit-scrollbar { display: none; }
 
 /* Header */
 .routine-header {
+  flex-shrink: 0;
   padding: 24px 20px 20px;
   background: linear-gradient(to bottom, var(--black-mid), var(--black));
   border-bottom: 1px solid rgba(201,168,76,0.08);
@@ -279,6 +293,48 @@
   text-align: center;
   font-family: var(--font-body);
 }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -290,29 +346,30 @@
     <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
   </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <!-- HEADER -->
-      <div class="routine-header">
-        <div class="header-top">
-          <div>
-            <div class="greeting">Hola, <em>Fernando</em></div>
-            <div class="greeting-sub">Lunes 22 de marzo · Día de pecho</div>
-          </div>
-          <div class="header-avatar">
-            <div class="avatar">FE</div>
-          </div>
+    <!-- HEADER — outside scroll container so it never moves -->
+    <div class="routine-header">
+      <div class="header-top">
+        <div>
+          <div class="greeting">Hola, <em>Fernando</em></div>
+          <div class="greeting-sub">Lunes 22 de marzo · Día de pecho</div>
         </div>
-        <div class="progress-section">
-          <div class="progress-row">
-            <span class="progress-label">Progreso de hoy</span>
-            <span class="progress-count">3 / 6</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 50%"></div>
-          </div>
+        <div class="header-avatar">
+          <div class="avatar">FE</div>
         </div>
       </div>
+      <div class="progress-section">
+        <div class="progress-row">
+          <span class="progress-label">Progreso de hoy</span>
+          <span class="progress-count">3 / 6</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-inner">
 
       <!-- DAYS STRIP -->
       <div class="day-strip">

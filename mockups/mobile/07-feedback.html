@@ -7,16 +7,31 @@
 <title>Mockup — Feedback (Mobile)</title>
 <link rel="stylesheet" href="../assets/design-system.css">
 <style>
+/* Make screen a flex column so header stays fixed above scrollable content */
+.screen {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
 .screen-inner {
-  min-height: 100%;
+  flex: 1;
+  min-height: 0;
   background: var(--black);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
   padding-bottom: calc(var(--bottom-nav) + 16px);
 }
 
+.screen-inner::-webkit-scrollbar { display: none; }
+
 .fb-header {
+  flex-shrink: 0;
   padding: 20px 20px 20px;
   background: var(--black-mid);
   border-bottom: 1px solid rgba(201,168,76,0.08);
+  z-index: 10;
 }
 
 .fb-header .app-section-label { margin-bottom: 4px; }
@@ -189,6 +204,56 @@
 .submit-area {
   padding: 16px 20px 0;
 }
+
+@media (max-width: 480px) {
+  html, body { height: auto !important; overflow-x: hidden !important; }
+  body { display: block !important; }
+
+  .mockup-label { display: none !important; }
+  .dynamic-island { display: none !important; }
+  .status-bar { display: none !important; }
+
+  .phone-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  /* On real device: undo flex layout, let whole page scroll */
+  .screen {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .screen-inner {
+    overflow: visible !important;
+    height: auto !important;
+    padding-bottom: calc(var(--bottom-nav) + 60px) !important;
+  }
+
+  /* Header sticks to body scroll on real device */
+  .fb-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+  }
+
+  .bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    padding-bottom: max(env(safe-area-inset-bottom), 8px) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -200,13 +265,14 @@
     <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
   </div>
   <div class="screen">
-    <div class="screen-inner">
 
-      <!-- HEADER -->
-      <div class="fb-header">
-        <div class="app-section-label">Tu opinión importa</div>
-        <div class="app-section-title">Feedback &amp; <em>Reseñas</em></div>
-      </div>
+    <!-- HEADER — outside scroll container so it never moves -->
+    <div class="fb-header">
+      <div class="app-section-label">Tu opinión importa</div>
+      <div class="app-section-title">Feedback &amp; <em>Reseñas</em></div>
+    </div>
+
+    <div class="screen-inner">
 
       <!-- RATINGS -->
       <div class="rating-section">
