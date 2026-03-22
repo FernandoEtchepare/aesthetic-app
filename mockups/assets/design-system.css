@@ -458,3 +458,25 @@ body {
 .desktop-content {
   padding: 32px;
 }
+
+/* ---- REAL DEVICE VIEW ---- */
+/* When opened on an actual phone, hide the mockup chrome and fill the screen */
+@media (max-width: 480px) {
+  body {
+    padding: 0 !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+  }
+  .mockup-label { display: none; }
+  .phone-frame {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .screen {
+    height: calc(100vh - var(--status-bar)) !important;
+  }
+}
