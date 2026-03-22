@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Ejercicio + Video (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  background: var(--black);
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+}
+
+/* VIDEO PLAYER */
+.video-player {
+  width: 100%;
+  height: 230px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1208 50%, #0a0a0a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.video-pattern {
+  position: absolute; inset: 0;
+  opacity: 0.04;
+  background-image: repeating-linear-gradient(
+    45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 30px
+  );
+}
+
+.play-circle {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  border: 2px solid rgba(201,168,76,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  color: var(--gold);
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.video-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  z-index: 1;
+}
+
+.video-overlay-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  z-index: 2;
+}
+
+.back-btn {
+  color: var(--white);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.video-duration {
+  font-size: 0.6rem;
+  color: var(--white-dim);
+  background: rgba(0,0,0,0.5);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  z-index: 2;
+}
+
+.video-progress {
+  height: 2px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 1px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.video-progress-fill {
+  height: 100%;
+  width: 35%;
+  background: var(--gold);
+  border-radius: 1px;
+}
+
+.video-progress-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  position: absolute;
+  top: -4px; left: 35%;
+  transform: translateX(-50%);
+}
+
+.video-time {
+  font-size: 0.55rem;
+  color: var(--white-dim);
+}
+
+/* CONTENT */
+.ex-content {
+  padding: 20px 20px 0;
+}
+
+.ex-header {
+  margin-bottom: 16px;
+}
+
+.ex-header .tag { margin-bottom: 8px; }
+
+.ex-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.ex-machine-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.62rem;
+  color: var(--white-faint);
+}
+
+.machine-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Description */
+.info-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.info-card-title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.info-card-text {
+  font-size: 0.7rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--white-dim);
+}
+
+/* Warnings */
+.warning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.warning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.68rem;
+  color: var(--white-dim);
+  line-height: 1.5;
+}
+
+.warning-icon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Alternatives */
+.alt-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.alt-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.06);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 130px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.alt-card:hover { border-color: rgba(201,168,76,0.2); }
+
+.alt-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(201,168,76,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.alt-name {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.alt-type {
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+</style>
+</head>
+<body>
+<div class="mockup-label">04 — Ejercicio + Video · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <!-- VIDEO -->
+      <div class="video-player">
+        <div class="video-bg">
+          <div class="video-pattern"></div>
+          <div class="play-circle">▶</div>
+          <div class="video-label">Ver demostración</div>
+        </div>
+        <div class="video-overlay-top">
+          <div class="back-btn">← Volver a rutina</div>
+          <div class="video-duration">2:34</div>
+        </div>
+        <div class="video-controls">
+          <div class="video-progress">
+            <div class="video-progress-fill"></div>
+            <div class="video-progress-dot"></div>
+          </div>
+          <div class="video-time">0:54 / 2:34</div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="ex-content">
+
+        <div class="ex-header">
+          <div class="tag">Espalda · Polea alta</div>
+          <div style="height:8px"></div>
+          <div class="ex-title">Jalón al pecho</div>
+          <div class="ex-machine-row">
+            <span class="machine-dot"></span>
+            <span>Máquina de polea alta</span>
+            <span class="machine-dot"></span>
+            <span>Intermedio</span>
+          </div>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="info-card">
+          <div class="info-card-title">Descripción del ejercicio</div>
+          <div class="info-card-text">
+            El jalón al pecho trabaja principalmente el dorsal ancho, romboides y bíceps. Sentado frente a la máquina, agarrás la barra con agarre amplio y tirás hacia la parte superior del pecho manteniendo la espalda levemente inclinada. Controlá el movimiento tanto en la bajada como en la subida.
+          </div>
+        </div>
+
+        <!-- PRECAUCIONES -->
+        <div class="info-card">
+          <div class="info-card-title">⚠ Precauciones</div>
+          <div class="warning-list">
+            <div class="warning-item">
+              <span class="warning-icon">▸</span>
+              <span>No arquees la espalda excesivamente al bajar la barra.</span>
+            </div>
+            <div class="warning-item">
+              <span class="warning-icon">▸</span>
+              <span>Evitá jalones bruscos o con impulso del cuerpo.</span>
+            </div>
+            <div class="warning-item">
+              <span class="warning-icon">▸</span>
+              <span>Mantené los hombros bajos y alejados de las orejas.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALTERNATIVAS -->
+        <div class="info-card-title" style="margin-bottom:12px">Ejercicios alternativos</div>
+        <div class="alt-scroll">
+          <div class="alt-card">
+            <div class="alt-icon">⬆</div>
+            <div class="alt-name">Dominadas</div>
+            <div class="alt-type">Calisténia</div>
+          </div>
+          <div class="alt-card">
+            <div class="alt-icon">🔄</div>
+            <div class="alt-name">Jalón neutro</div>
+            <div class="alt-type">Polea · Agarre neutro</div>
+          </div>
+          <div class="alt-card">
+            <div class="alt-icon">💪</div>
+            <div class="alt-name">Pullover</div>
+            <div class="alt-type">Mancuerna</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item active"><div class="nav-icon">🏠</div><div class="nav-text">Rutina</div></div>
+      <div class="nav-item"><div class="nav-icon">👥</div><div class="nav-text">Comunidad</div></div>
+      <div class="nav-item"><div class="nav-icon">📍</div><div class="nav-text">Check-in</div></div>
+      <div class="nav-item"><div class="nav-icon">👤</div><div class="nav-text">Perfil</div></div>
+      <div class="nav-item"><div class="nav-icon">⭐</div><div class="nav-text">Feedback</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

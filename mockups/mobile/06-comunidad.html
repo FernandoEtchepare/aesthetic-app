@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Comunidad (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  background: var(--black);
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+}
+
+.comm-header {
+  padding: 20px 20px 16px;
+  background: var(--black-mid);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.comm-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.comm-header .app-section-title { font-size: 1.3rem; }
+
+.notif-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  position: relative;
+}
+
+.notif-dot {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--black-mid);
+}
+
+/* CHECK-IN BANNER */
+.checkin-banner {
+  background: linear-gradient(135deg, #1a1208, #111108);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20px 16px;
+}
+
+.checkin-info .checkin-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.checkin-info .checkin-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.checkin-info .checkin-sub {
+  font-size: 0.58rem;
+  color: var(--white-faint);
+  margin-top: 2px;
+}
+
+.checkin-btn {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* WHO'S AT GYM */
+.now-section {
+  padding: 0 20px 16px;
+}
+
+.now-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.now-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.now-count {
+  font-size: 0.58rem;
+  color: var(--gold);
+}
+
+.avatars-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.online-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--black-soft);
+  border: 2px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  position: relative;
+  cursor: pointer;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #4a9e6b;
+  border: 2px solid var(--black);
+}
+
+.more-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1px dashed rgba(245,240,232,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem;
+  color: var(--white-faint);
+  cursor: pointer;
+}
+
+/* POSTS */
+.posts-section {
+  padding: 0 20px;
+}
+
+.post-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.post-card.official {
+  border-color: rgba(201,168,76,0.2);
+  background: linear-gradient(to bottom, rgba(201,168,76,0.04), var(--black-card));
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-author .author-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 1px;
+}
+
+.post-author .author-meta {
+  font-size: 0.55rem;
+  color: var(--white-faint);
+}
+
+.official-badge {
+  margin-left: auto;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.post-body {
+  font-size: 0.72rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--white-dim);
+  margin-bottom: 12px;
+}
+
+.post-image {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  opacity: 0.4;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.post-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.62rem;
+  color: var(--white-faint);
+  cursor: pointer;
+}
+
+.post-action.liked { color: var(--gold); }
+
+/* NEW POST BTN */
+.new-post-btn {
+  position: fixed;
+  bottom: calc(var(--bottom-nav) + 16px);
+  right: 20px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+}
+</style>
+</head>
+<body>
+<div class="mockup-label">06 — Comunidad · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <!-- HEADER -->
+      <div class="comm-header">
+        <div class="comm-header-top">
+          <div>
+            <div class="app-section-label">Aesthetic Gym</div>
+            <div class="app-section-title">Comunidad</div>
+          </div>
+          <div class="notif-btn">
+            🔔
+            <div class="notif-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:16px"></div>
+
+      <!-- CHECK-IN -->
+      <div class="checkin-banner">
+        <div class="checkin-info">
+          <div class="checkin-label">¿Estás en el gym?</div>
+          <div class="checkin-title">Hacer check-in</div>
+          <div class="checkin-sub">Marcá tu presencia hoy</div>
+        </div>
+        <button class="checkin-btn">📍 Check-in</button>
+      </div>
+
+      <!-- QUIÉN ESTÁ -->
+      <div class="now-section">
+        <div class="now-header">
+          <span class="now-title">En el gym ahora</span>
+          <span class="now-count">8 miembros</span>
+        </div>
+        <div class="avatars-row">
+          <div class="online-avatar">ML<div class="online-dot"></div></div>
+          <div class="online-avatar">JP<div class="online-dot"></div></div>
+          <div class="online-avatar">SR<div class="online-dot"></div></div>
+          <div class="online-avatar">CG<div class="online-dot"></div></div>
+          <div class="online-avatar">TM<div class="online-dot"></div></div>
+          <div class="more-btn">+3</div>
+        </div>
+      </div>
+
+      <!-- FEED -->
+      <div class="posts-section">
+
+        <div class="post-card official">
+          <div class="post-header">
+            <div class="avatar" style="background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.4);font-size:0.7rem">AG</div>
+            <div class="post-author">
+              <div class="author-name">Aesthetic Gym</div>
+              <div class="author-meta">Hace 2 horas</div>
+            </div>
+            <div class="official-badge">Oficial</div>
+          </div>
+          <div class="post-image">🏋</div>
+          <div class="post-body">Esta semana renovamos el sector de peso libre. Nuevas barras olímpicas, discos de goma y soportes. ¡Vení a probarlos!</div>
+          <div class="post-actions">
+            <div class="post-action liked">❤ 24</div>
+            <div class="post-action">💬 6</div>
+            <div class="post-action">↗ Compartir</div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar">ML</div>
+            <div class="post-author">
+              <div class="author-name">Martín López</div>
+              <div class="author-meta">Hace 3 horas · 📍 En el gym</div>
+            </div>
+          </div>
+          <div class="post-body">Primer día completando los 6 ejercicios de espalda sin pausas. El jalón al pecho con 70kg se sintió increíble 💪</div>
+          <div class="post-actions">
+            <div class="post-action">❤ 11</div>
+            <div class="post-action">💬 2</div>
+            <div class="post-action">↗ Compartir</div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar">SR</div>
+            <div class="post-author">
+              <div class="author-name">Sofía Rodríguez</div>
+              <div class="author-meta">Ayer</div>
+            </div>
+          </div>
+          <div class="post-body">¿Alguien más entrena temprano a las 7am? Quiero compañía 😄</div>
+          <div class="post-actions">
+            <div class="post-action">❤ 7</div>
+            <div class="post-action liked">💬 9</div>
+            <div class="post-action">↗ Compartir</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="new-post-btn">+</button>
+
+    <div class="bottom-nav">
+      <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-text">Rutina</div></div>
+      <div class="nav-item active"><div class="nav-icon">👥</div><div class="nav-text">Comunidad</div></div>
+      <div class="nav-item"><div class="nav-icon">📍</div><div class="nav-text">Check-in</div></div>
+      <div class="nav-item"><div class="nav-icon">👤</div><div class="nav-text">Perfil</div></div>
+      <div class="nav-item"><div class="nav-icon">⭐</div><div class="nav-text">Feedback</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

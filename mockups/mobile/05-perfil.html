@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Perfil (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  background: var(--black);
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+}
+
+.profile-hero {
+  background: linear-gradient(160deg, #1a1208 0%, #0d0d0a 100%);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  padding: 24px 20px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-top .screen-title {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.edit-btn {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 6px;
+  padding: 5px 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.profile-avatar-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.big-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border: 2px solid rgba(201,168,76,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  position: relative;
+  box-shadow: 0 0 20px rgba(201,168,76,0.15);
+  flex-shrink: 0;
+}
+
+.avatar-edit {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem;
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+
+.profile-info .name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.profile-info .email {
+  font-size: 0.62rem;
+  color: var(--white-faint);
+  margin-bottom: 8px;
+}
+
+.member-since {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* STATS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 16px 0 0;
+}
+
+.stat-box {
+  background: rgba(245,240,232,0.03);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.stat-box .stat-val {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-box .stat-lbl {
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+/* FORM SECTIONS */
+.form-section {
+  padding: 20px 20px 0;
+}
+
+.form-section-title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.input-row-inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.save-btn-area {
+  padding: 0 20px 20px;
+}
+
+/* Membership badge */
+.membership-card {
+  margin: 0 20px;
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mem-info .mem-tier {
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.mem-info .mem-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.mem-info .mem-exp {
+  font-size: 0.55rem;
+  color: var(--white-faint);
+  margin-top: 2px;
+}
+
+.mem-icon {
+  font-size: 1.6rem;
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+<div class="mockup-label">05 — Perfil · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <!-- HEADER -->
+      <div class="profile-hero">
+        <div class="profile-top">
+          <span class="screen-title">Mi perfil</span>
+          <button class="edit-btn">Editar</button>
+        </div>
+        <div class="profile-avatar-area">
+          <div class="big-avatar">
+            FE
+            <div class="avatar-edit">✎</div>
+          </div>
+          <div class="profile-info">
+            <div class="name">Fernando Etchepare</div>
+            <div class="email">fer@email.com</div>
+            <div class="member-since">
+              <span>★</span>
+              <span>Miembro desde Mar 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-val">42</span>
+            <span class="stat-lbl">Sesiones</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val">18</span>
+            <span class="stat-lbl">Racha días</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val">96%</span>
+            <span class="stat-lbl">Asistencia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEMBRESÍA -->
+      <div class="form-section">
+        <div class="form-section-title">Membresía activa</div>
+      </div>
+      <div class="membership-card">
+        <div class="mem-info">
+          <div class="mem-tier">Premium</div>
+          <div class="mem-name">Aesthetic</div>
+          <div class="mem-exp">Vence el 22 de abril de 2026</div>
+        </div>
+        <div class="mem-icon">🏆</div>
+      </div>
+
+      <!-- DATOS PERSONALES -->
+      <div class="form-section">
+        <div class="form-section-title">Datos personales</div>
+        <div class="fields">
+          <div class="input-row-inline">
+            <div class="input-group">
+              <label>Nombre</label>
+              <input type="text" value="Fernando">
+            </div>
+            <div class="input-group">
+              <label>Apellido</label>
+              <input type="text" value="Etchepare">
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" value="fer@email.com">
+          </div>
+          <div class="input-group">
+            <label>Teléfono</label>
+            <input type="tel" value="+54 223 000-0000">
+          </div>
+          <div class="input-row-inline">
+            <div class="input-group">
+              <label>Edad</label>
+              <input type="number" value="29">
+            </div>
+            <div class="input-group">
+              <label>Objetivo</label>
+              <select><option>Definición</option><option>Volumen</option><option>Fuerza</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMBIAR CONTRASEÑA -->
+      <div class="form-section">
+        <div class="form-section-title">Seguridad</div>
+        <div class="fields">
+          <div class="input-group">
+            <label>Contraseña actual</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+          <div class="input-group">
+            <label>Nueva contraseña</label>
+            <input type="password" placeholder="Mínimo 8 caracteres">
+          </div>
+        </div>
+      </div>
+
+      <div class="save-btn-area">
+        <button class="btn-gold">Guardar cambios</button>
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-text">Rutina</div></div>
+      <div class="nav-item"><div class="nav-icon">👥</div><div class="nav-text">Comunidad</div></div>
+      <div class="nav-item"><div class="nav-icon">📍</div><div class="nav-text">Check-in</div></div>
+      <div class="nav-item active"><div class="nav-icon">👤</div><div class="nav-text">Perfil</div></div>
+      <div class="nav-item"><div class="nav-icon">⭐</div><div class="nav-text">Feedback</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

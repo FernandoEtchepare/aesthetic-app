@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mockup — Feedback (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.fb-layout { display: grid; grid-template-columns: 1fr 340px; gap: 24px; padding: 24px; }
+.fc { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+.fc-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.rating-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.rc { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 12px; padding: 16px; }
+.rc-lbl { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.rc-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); margin-bottom: 12px; }
+.stars-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.star { font-size: 1.5rem; color: var(--gold); }
+.star.empty { opacity: 0.2; }
+.rv { font-size: 0.7rem; color: var(--white-faint); }
+.rv strong { color: var(--gold); font-size: 0.9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 0.58rem; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(245,240,232,0.12); color: var(--white-faint); cursor: pointer; background: transparent; font-family: var(--font-body); }
+.chip.sel { border-color: rgba(201,168,76,0.4); color: var(--gold); background: rgba(201,168,76,0.08); }
+.pi { background: var(--black-card); border: 1px solid rgba(245,240,232,0.04); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+.pi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.pi-date { font-size: 0.55rem; color: var(--white-faint); }
+.pi-stars { font-size: 0.75rem; color: var(--gold); }
+.pi-text { font-size: 0.7rem; color: var(--white-dim); line-height: 1.5; }
+.pi-tag { display: inline-block; font-size: 0.48rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.08); border-radius: 4px; padding: 2px 6px; margin-top: 6px; }
+.avg-card { background: linear-gradient(135deg, #1a1208, #0d0d0a); border: 1px solid rgba(201,168,76,0.25); border-radius: 14px; padding: 24px; text-align: center; margin-bottom: 16px; }
+.avg-num { font-family: var(--font-display); font-size: 4rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.avg-lbl { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-faint); margin-top: 4px; }
+.dist-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.dist-num { font-size: 0.65rem; color: var(--white-faint); width: 8px; }
+.dist-track { flex: 1; height: 6px; background: rgba(245,240,232,0.05); border-radius: 3px; overflow: hidden; }
+.dist-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+.dist-count { font-size: 0.58rem; color: var(--white-faint); width: 20px; text-align: right; }
+</style>
+</head>
+<body>
+<div class="mockup-label">06 — Feedback · Desktop · 1280×800</div>
+<div class="desktop-frame">
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 24px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;font-family:var(--font-display);font-size:1.1rem;color:var(--white)">Aesthetic<span style="color:var(--gold)">.</span></div>
+    <div class="sidebar-nav">
+      <div class="sidebar-item"><span class="s-icon">🏠</span><span class="s-text">Mi rutina</span></div>
+      <div class="sidebar-item"><span class="s-icon">👥</span><span class="s-text">Comunidad</span></div>
+      <div class="sidebar-item"><span class="s-icon">📍</span><span class="s-text">Check-in</span></div>
+      <div class="sidebar-item"><span class="s-icon">👤</span><span class="s-text">Mi perfil</span></div>
+      <div class="sidebar-item active"><span class="s-icon">⭐</span><span class="s-text">Feedback</span></div>
+    </div>
+  </div>
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div><div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white)">Feed<em style="font-style:italic;color:var(--gold)">back</em></div></div>
+    </div>
+    <div class="fb-layout">
+      <div>
+        <div class="rating-row">
+          <div class="rc">
+            <div class="rc-lbl">Calificación app</div>
+            <div class="rc-title">¿Cómo calificás la app?</div>
+            <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:0.4">★</span></div>
+            <div class="rv"><strong>4.0</strong> / 5</div>
+          </div>
+          <div class="rc">
+            <div class="rc-lbl">Calificación gimnasio</div>
+            <div class="rc-title">¿Cómo calificás el gym?</div>
+            <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="rv"><strong>5.0</strong> / 5</div>
+          </div>
+        </div>
+
+        <div class="fc">
+          <div class="fc-title">Categoría</div>
+          <div class="chips">
+            <button class="chip sel">App</button>
+            <button class="chip">Equipamiento</button>
+            <button class="chip">Coaches</button>
+            <button class="chip">Horarios</button>
+            <button class="chip">Limpieza</button>
+            <button class="chip">Ambiente</button>
+            <button class="chip">Sugerencias</button>
+          </div>
+        </div>
+
+        <div class="fc">
+          <div class="fc-title">Tu comentario</div>
+          <div class="input-group" style="margin-bottom:14px">
+            <textarea style="height:100px;font-size:0.75px" placeholder="Contanos tu experiencia o sugerencia..."></textarea>
+          </div>
+          <button class="btn-gold" style="padding:14px;font-size:0.65rem">Enviar feedback</button>
+        </div>
+
+        <div class="fc">
+          <div class="fc-title">Mis reseñas anteriores</div>
+          <div class="pi">
+            <div class="pi-top"><span class="pi-date">15 de marzo, 2026</span><div class="pi-stars">★★★★★</div></div>
+            <div class="pi-text">El equipamiento está siempre en perfectas condiciones y los coaches son muy atentos.</div>
+            <div class="pi-tag">Equipamiento</div>
+          </div>
+          <div class="pi">
+            <div class="pi-top"><span class="pi-date">1 de marzo, 2026</span><div class="pi-stars">★★★★☆</div></div>
+            <div class="pi-text">Me gustaría que agreguen más videos de ejercicios en la app. La navegación es muy fluida.</div>
+            <div class="pi-tag">App</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="avg-card">
+          <div class="avg-num">4.8</div>
+          <div class="stars-row" style="justify-content:center;margin:8px 0 4px"><span class="star" style="font-size:1.2rem">★</span><span class="star" style="font-size:1.2rem">★</span><span class="star" style="font-size:1.2rem">★</span><span class="star" style="font-size:1.2rem">★</span><span class="star" style="font-size:1.2rem;opacity:0.5">★</span></div>
+          <div class="avg-lbl">Puntuación promedio del gym</div>
+        </div>
+
+        <div class="fc">
+          <div class="fc-title">Distribución de reseñas</div>
+          <div class="dist-bar"><span class="dist-num">5</span><div class="dist-track"><div class="dist-fill" style="width:75%"></div></div><span class="dist-count">75%</span></div>
+          <div class="dist-bar"><span class="dist-num">4</span><div class="dist-track"><div class="dist-fill" style="width:18%"></div></div><span class="dist-count">18%</span></div>
+          <div class="dist-bar"><span class="dist-num">3</span><div class="dist-track"><div class="dist-fill" style="width:5%"></div></div><span class="dist-count">5%</span></div>
+          <div class="dist-bar"><span class="dist-num">2</span><div class="dist-track"><div class="dist-fill" style="width:2%"></div></div><span class="dist-count">2%</span></div>
+          <div class="dist-bar"><span class="dist-num">1</span><div class="dist-track"><div class="dist-fill" style="width:0%"></div></div><span class="dist-count">0%</span></div>
+        </div>
+
+        <div class="fc">
+          <div class="fc-title">Total de reseñas</div>
+          <div style="font-family:var(--font-display);font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:4px">127</div>
+          <div style="font-size:0.58rem;color:var(--white-faint);letter-spacing:0.1em">reseñas de miembros activos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

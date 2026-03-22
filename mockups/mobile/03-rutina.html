@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Rutina del Día (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+  background: var(--black);
+}
+
+/* Header */
+.routine-header {
+  padding: 24px 20px 20px;
+  background: linear-gradient(to bottom, var(--black-mid), var(--black));
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.greeting {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.greeting em { font-style: italic; color: var(--gold); }
+
+.greeting-sub {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  margin-top: 2px;
+}
+
+.header-avatar .avatar { width: 44px; height: 44px; font-size: 0.9rem; }
+
+/* Progress */
+.progress-section {
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+.progress-count {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Day chips */
+.day-strip {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.day-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.day-chip.today {
+  background: rgba(201,168,76,0.1);
+  border-color: rgba(201,168,76,0.3);
+}
+
+.day-chip.done { border-color: rgba(74,158,107,0.3); background: rgba(74,158,107,0.05); }
+
+.day-num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white-dim);
+}
+
+.day-chip.today .day-num { color: var(--gold); }
+.day-chip.done .day-num { color: #4a9e6b; }
+
+.day-name {
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+/* Section header */
+.section-header {
+  padding: 20px 20px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-header .app-section-title { font-size: 1.2rem; }
+.section-all {
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* Exercise cards */
+.exercise-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exercise-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.exercise-card.completed { border-color: rgba(74,158,107,0.25); }
+.exercise-card.active { border-color: rgba(201,168,76,0.3); }
+
+.ex-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ex-left { display: flex; align-items: center; gap: 10px; }
+
+.ex-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.exercise-card.completed .ex-icon { background: rgba(74,158,107,0.1); border-color: rgba(74,158,107,0.2); }
+
+.ex-info .ex-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.ex-info .ex-machine {
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+.ex-right { display: flex; align-items: center; gap: 10px; }
+
+.video-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.check-btn {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,240,232,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+}
+
+.exercise-card.completed .check-btn {
+  background: #4a9e6b;
+  border-color: #4a9e6b;
+  color: white;
+}
+
+/* Series table */
+.series-table {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  gap: 0;
+  background: rgba(245,240,232,0.03);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.58rem;
+}
+
+.series-table .th {
+  padding: 6px 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  background: rgba(245,240,232,0.03);
+  border-bottom: 1px solid rgba(245,240,232,0.05);
+}
+
+.series-table .td {
+  padding: 7px 8px;
+  color: var(--white-dim);
+  border-bottom: 1px solid rgba(245,240,232,0.04);
+  display: flex;
+  align-items: center;
+}
+
+.series-table .td.editable {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.series-table .td.done-row { opacity: 0.5; }
+
+.series-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.td input.inline-edit {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 4px;
+  color: var(--gold);
+  font-size: 0.65rem;
+  font-weight: 600;
+  width: 40px;
+  padding: 2px 4px;
+  text-align: center;
+  font-family: var(--font-body);
+}
+</style>
+</head>
+<body>
+<div class="mockup-label">03 — Rutina del Día · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <!-- HEADER -->
+      <div class="routine-header">
+        <div class="header-top">
+          <div>
+            <div class="greeting">Hola, <em>Fernando</em></div>
+            <div class="greeting-sub">Lunes 22 de marzo · Día de pecho</div>
+          </div>
+          <div class="header-avatar">
+            <div class="avatar">FE</div>
+          </div>
+        </div>
+        <div class="progress-section">
+          <div class="progress-row">
+            <span class="progress-label">Progreso de hoy</span>
+            <span class="progress-count">3 / 6</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 50%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAYS STRIP -->
+      <div class="day-strip">
+        <div class="day-chip done"><span class="day-num">L</span><span class="day-name">Pecho</span></div>
+        <div class="day-chip today"><span class="day-num">M</span><span class="day-name">Espalda</span></div>
+        <div class="day-chip"><span class="day-num">X</span><span class="day-name">Piernas</span></div>
+        <div class="day-chip"><span class="day-num">J</span><span class="day-name">Hombros</span></div>
+        <div class="day-chip"><span class="day-num">V</span><span class="day-name">Brazos</span></div>
+        <div class="day-chip"><span class="day-num">S</span><span class="day-name">Cardio</span></div>
+      </div>
+
+      <!-- EXERCISE LIST -->
+      <div class="section-header">
+        <div>
+          <div class="app-section-label">Tu rutina</div>
+          <div class="app-section-title">Espalda</div>
+        </div>
+        <span class="section-all">Ver todas →</span>
+      </div>
+
+      <div class="exercise-list">
+
+        <!-- EJ 1 - completed -->
+        <div class="exercise-card completed">
+          <div class="ex-top">
+            <div class="ex-left">
+              <div class="ex-icon">🏋</div>
+              <div class="ex-info">
+                <div class="ex-name">Peso muerto</div>
+                <div class="ex-machine">Barra libre</div>
+              </div>
+            </div>
+            <div class="ex-right">
+              <div class="video-btn">▶</div>
+              <div class="check-btn">✓</div>
+            </div>
+          </div>
+          <div class="series-table">
+            <div class="th">Serie</div><div class="th">Reps</div><div class="th">Peso</div><div class="th">Estado</div>
+            <div class="td"><div class="series-num">1</div></div><div class="td done-row">8</div><div class="td done-row">80kg</div><div class="td done-row" style="color:#4a9e6b">✓</div>
+            <div class="td"><div class="series-num">2</div></div><div class="td done-row">8</div><div class="td done-row">80kg</div><div class="td done-row" style="color:#4a9e6b">✓</div>
+            <div class="td"><div class="series-num">3</div></div><div class="td done-row">6</div><div class="td done-row">85kg</div><div class="td done-row" style="color:#4a9e6b">✓</div>
+          </div>
+        </div>
+
+        <!-- EJ 2 - active/current -->
+        <div class="exercise-card active">
+          <div class="ex-top">
+            <div class="ex-left">
+              <div class="ex-icon">💪</div>
+              <div class="ex-info">
+                <div class="ex-name">Jalón al pecho</div>
+                <div class="ex-machine">Máquina polea alta</div>
+              </div>
+            </div>
+            <div class="ex-right">
+              <div class="video-btn">▶</div>
+              <div class="check-btn"></div>
+            </div>
+          </div>
+          <div class="series-table">
+            <div class="th">Serie</div><div class="th">Reps</div><div class="th">Peso (kg)</div><div class="th">Estado</div>
+            <div class="td"><div class="series-num">1</div></div>
+            <div class="td editable"><input class="inline-edit" value="10"></div>
+            <div class="td editable"><input class="inline-edit" value="55"></div>
+            <div class="td" style="color:#4a9e6b">✓</div>
+            <div class="td"><div class="series-num">2</div></div>
+            <div class="td editable"><input class="inline-edit" value="10"></div>
+            <div class="td editable"><input class="inline-edit" value="55"></div>
+            <div class="td" style="color:var(--white-faint)">—</div>
+            <div class="td"><div class="series-num">3</div></div>
+            <div class="td editable"><input class="inline-edit" value="8"></div>
+            <div class="td editable"><input class="inline-edit" value="60"></div>
+            <div class="td" style="color:var(--white-faint)">—</div>
+          </div>
+          <div class="tag" style="align-self:flex-start">EN CURSO</div>
+        </div>
+
+        <!-- EJ 3 -->
+        <div class="exercise-card">
+          <div class="ex-top">
+            <div class="ex-left">
+              <div class="ex-icon">🔄</div>
+              <div class="ex-info">
+                <div class="ex-name">Remo con barra</div>
+                <div class="ex-machine">Barra libre</div>
+              </div>
+            </div>
+            <div class="ex-right">
+              <div class="video-btn">▶</div>
+              <div class="check-btn"></div>
+            </div>
+          </div>
+          <div class="series-table">
+            <div class="th">Serie</div><div class="th">Reps</div><div class="th">Peso</div><div class="th">Estado</div>
+            <div class="td"><div class="series-num">1</div></div><div class="td">10</div><div class="td">60kg</div><div class="td" style="color:var(--white-faint)">—</div>
+            <div class="td"><div class="series-num">2</div></div><div class="td">10</div><div class="td">60kg</div><div class="td" style="color:var(--white-faint)">—</div>
+            <div class="td"><div class="series-num">3</div></div><div class="td">8</div><div class="td">65kg</div><div class="td" style="color:var(--white-faint)">—</div>
+          </div>
+        </div>
+
+        <!-- EJ 4 -->
+        <div class="exercise-card">
+          <div class="ex-top">
+            <div class="ex-left">
+              <div class="ex-icon">⬆</div>
+              <div class="ex-info">
+                <div class="ex-name">Dominadas</div>
+                <div class="ex-machine">Calisténia · Barra fija</div>
+              </div>
+            </div>
+            <div class="ex-right">
+              <div class="video-btn">▶</div>
+              <div class="check-btn"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+      <div class="nav-item active">
+        <div class="nav-icon">🏠</div>
+        <div class="nav-text">Rutina</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">👥</div>
+        <div class="nav-text">Comunidad</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">📍</div>
+        <div class="nav-text">Check-in</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">👤</div>
+        <div class="nav-text">Perfil</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">⭐</div>
+        <div class="nav-text">Feedback</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Login (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+
+.desktop-login {
+  width: 1280px;
+  height: 800px;
+  background: var(--black);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.15);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT PANEL — brand */
+.login-brand {
+  background: linear-gradient(160deg, #1a1208 0%, #0d0d0a 50%, #111111 100%);
+  border-right: 1px solid rgba(201,168,76,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-brand::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.brand-pattern {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image:
+    linear-gradient(rgba(201,168,76,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.brand-logo {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #2a1f08, #0a0a0a);
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 32px;
+  box-shadow: 0 0 60px rgba(201,168,76,0.1);
+  z-index: 1;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.brand-title em { font-style: italic; color: var(--gold); }
+
+.brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  text-align: center;
+  z-index: 1;
+  max-width: 280px;
+  line-height: 1.8;
+}
+
+.brand-divider {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  margin: 24px auto;
+  z-index: 1;
+}
+
+.brand-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+  width: 100%;
+  max-width: 280px;
+}
+
+.brand-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.68rem;
+  color: var(--white-dim);
+}
+
+.feature-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* RIGHT PANEL — form */
+.login-form-panel {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 36px;
+  width: 100%;
+}
+
+.form-header h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.form-header h2 em { font-style: italic; color: var(--gold); }
+
+.form-header p {
+  font-size: 0.65rem;
+  color: var(--white-faint);
+  letter-spacing: 0.05em;
+}
+
+.form-body {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-row {
+  position: relative;
+}
+
+.input-row .ico {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--white-faint);
+}
+
+.forgot {
+  text-align: right;
+  font-size: 0.6rem;
+  color: var(--gold);
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+.social-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.register-link {
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--white-faint);
+}
+
+.register-link a { color: var(--gold); font-weight: 600; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="mockup-label">01 — Login · Desktop · 1280×800</div>
+<div class="desktop-login">
+
+  <!-- LEFT: BRAND -->
+  <div class="login-brand">
+    <div class="brand-pattern"></div>
+    <div class="brand-logo">AG</div>
+    <div class="brand-title">Tu cuerpo.<br><em>Tu estética.</em></div>
+    <div class="brand-divider"></div>
+    <div class="brand-tagline">La disciplina como identidad. El entrenamiento como arte.</div>
+    <div style="height:32px"></div>
+    <div class="brand-features">
+      <div class="brand-feature"><div class="feature-dot"></div>Rutinas personalizadas por tu coach</div>
+      <div class="brand-feature"><div class="feature-dot"></div>Videos y guías de cada ejercicio</div>
+      <div class="brand-feature"><div class="feature-dot"></div>Comunidad y seguimiento de progreso</div>
+      <div class="brand-feature"><div class="feature-dot"></div>Check-in y estadísticas en tiempo real</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="login-form-panel">
+    <div class="form-header">
+      <h2>Bienvenido de <em>vuelta</em></h2>
+      <p>Ingresá a tu cuenta para continuar</p>
+    </div>
+    <div class="form-body">
+      <div class="input-group">
+        <label>Email</label>
+        <div class="input-row">
+          <input type="email" placeholder="tu@email.com" value="fernando@email.com">
+          <span class="ico">✉</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Contraseña</label>
+        <div class="input-row">
+          <input type="password" placeholder="••••••••" value="password">
+          <span class="ico">👁</span>
+        </div>
+      </div>
+      <div class="forgot">¿Olvidaste tu contraseña?</div>
+      <button class="btn-gold">Iniciar sesión</button>
+      <div class="or-divider">o continuá con</div>
+      <div class="social-row">
+        <button class="btn-outline" style="font-size:0.6rem;padding:12px">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+            <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button class="btn-outline" style="font-size:0.6rem;padding:12px">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor">
+            <path d="M12.7 0c.07.97-.28 1.94-.85 2.66-.57.72-1.46 1.28-2.35 1.21-.1-.9.3-1.84.84-2.5C10.9.67 11.84.1 12.7 0zm3.3 13.27c-.5.97-1.05 1.9-1.85 2.74-.77.8-1.57 1.35-2.5 1.35-.9 0-1.5-.5-2.38-.5-.92 0-1.6.5-2.45.5-.9 0-1.73-.57-2.5-1.4C2.1 14.6.9 12.3.9 10.07c0-3.8 2.46-5.8 4.9-5.8 1 0 1.85.56 2.5.56.6 0 1.55-.6 2.7-.6 1.1 0 2.8.6 3.8 2.2-.1.07-2.3 1.33-2.3 3.97 0 3.1 2.7 4.14 2.5 4.87z"/>
+          </svg>
+          Apple
+        </button>
+      </div>
+      <div class="register-link">¿No tenés cuenta? <a>Registrate</a></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

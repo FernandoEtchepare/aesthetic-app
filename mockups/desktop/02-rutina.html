@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Rutina del Día (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+
+.sidebar-logo { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); }
+.sidebar-logo span { color: var(--gold); }
+
+.top-greeting { font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); }
+.top-greeting em { font-style: italic; color: var(--gold); }
+.top-sub { font-size: 0.6rem; color: var(--white-faint); letter-spacing: 0.1em; }
+
+.top-right { display: flex; gap: 12px; align-items: center; }
+.top-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); }
+
+/* Main layout */
+.main-grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; height: 100%; }
+
+/* Progress overview */
+.overview-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.ov-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+.ov-card.gold-card {
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border-color: rgba(201,168,76,0.2);
+}
+.ov-val { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.ov-lbl { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-faint); }
+
+/* Exercise list desktop */
+.ex-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 80px 80px 80px 80px 60px;
+  gap: 0;
+  padding: 8px 16px;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  margin-bottom: 4px;
+}
+
+.ex-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 80px 80px 80px 80px 60px;
+  gap: 0;
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.04);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  align-items: center;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.ex-row:hover { border-color: rgba(201,168,76,0.15); }
+.ex-row.active { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.03); }
+.ex-row.done { opacity: 0.6; }
+
+.ex-name-cell { display: flex; align-items: center; gap: 12px; }
+.ex-icon-sm {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(201,168,76,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.ex-name-txt { font-size: 0.78rem; font-weight: 600; color: var(--white); }
+.ex-machine-txt { font-size: 0.55rem; color: var(--white-faint); margin-top: 2px; }
+
+.ex-cell { font-size: 0.72rem; color: var(--white-dim); }
+.ex-cell.editable {
+  display: flex; align-items: center;
+}
+.ex-cell.editable input {
+  width: 52px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 6px;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.ex-cell .video-sm {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem; color: var(--gold); cursor: pointer;
+}
+
+.ex-cell .check-sm {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,240,232,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; cursor: pointer;
+}
+.done .check-sm { background: #4a9e6b; border-color: #4a9e6b; color: white; }
+
+/* RIGHT PANEL */
+.right-panel { display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+
+.panel-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.panel-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+/* Day strip */
+.day-row { display: flex; gap: 6px; }
+.day-pill {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 8px;
+  background: rgba(245,240,232,0.03);
+  border: 1px solid rgba(245,240,232,0.05);
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.55rem;
+}
+.day-pill.today { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); }
+.day-pill .d-num { font-family: var(--font-display); font-size: 1rem; color: var(--white-dim); display: block; line-height: 1; }
+.day-pill.today .d-num { color: var(--gold); }
+.day-pill .d-name { color: var(--white-faint); display: block; margin-top: 3px; }
+
+/* Current exercise detail */
+.current-ex {
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  border-color: rgba(201,168,76,0.2);
+}
+.current-ex-icon { font-size: 2rem; text-align: center; margin-bottom: 10px; }
+.current-ex-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); margin-bottom: 4px; }
+.current-ex-meta { font-size: 0.58rem; color: var(--white-faint); margin-bottom: 14px; }
+.series-mini { display: flex; flex-direction: column; gap: 6px; }
+.series-mini-row {
+  display: grid; grid-template-columns: 24px 1fr 1fr;
+  gap: 8px; align-items: center; font-size: 0.62rem;
+}
+.s-num { width: 20px; height: 20px; border-radius: 50%; background: rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.5rem; color: var(--gold); }
+.s-val { color: var(--white-dim); }
+.s-val input { width: 44px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 4px; color: var(--gold); font-size: 0.6rem; padding: 2px 6px; text-align: center; font-family: var(--font-body); }
+.complete-btn { margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="mockup-label">02 — Rutina del Día · Desktop · 1280×800</div>
+<div class="desktop-frame">
+
+  <!-- SIDEBAR -->
+  <div class="desktop-sidebar">
+    <div class="sidebar-logo" style="padding:0 24px 24px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;">
+      <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--white)">Aesthetic<span style="color:var(--gold)">.</span></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="sidebar-item active"><span class="s-icon">🏠</span><span class="s-text">Mi rutina</span></div>
+      <div class="sidebar-item"><span class="s-icon">👥</span><span class="s-text">Comunidad</span></div>
+      <div class="sidebar-item"><span class="s-icon">📍</span><span class="s-text">Check-in</span></div>
+      <div class="sidebar-item"><span class="s-icon">👤</span><span class="s-text">Mi perfil</span></div>
+      <div class="sidebar-item"><span class="s-icon">⭐</span><span class="s-text">Feedback</span></div>
+    </div>
+    <div style="padding:24px 24px 0;border-top:1px solid rgba(245,240,232,0.05);margin-top:auto;">
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div class="top-avatar">FE</div>
+        <div>
+          <div style="font-size:0.68rem;color:var(--white);font-weight:600">Fernando E.</div>
+          <div style="font-size:0.55rem;color:var(--white-faint)">Plan Aesthetic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div>
+        <div class="top-greeting">Hola, <em>Fernando</em></div>
+        <div class="top-sub">Lunes 22 de marzo · Día de espalda</div>
+      </div>
+      <div class="top-right">
+        <div style="font-size:0.62rem;color:var(--white-faint)">Progreso: <strong style="color:var(--gold)">3/6</strong></div>
+        <div style="width:80px;background:rgba(245,240,232,0.08);height:4px;border-radius:2px;overflow:hidden">
+          <div style="width:50%;height:100%;background:var(--gold)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-content">
+      <div class="main-grid">
+        <div>
+          <!-- OVERVIEW -->
+          <div class="overview-cards">
+            <div class="ov-card gold-card"><div class="ov-val">3/6</div><div class="ov-lbl">Ejercicios hoy</div></div>
+            <div class="ov-card"><div class="ov-val">42</div><div class="ov-lbl">Sesiones totales</div></div>
+            <div class="ov-card"><div class="ov-val">18</div><div class="ov-lbl">Días de racha</div></div>
+            <div class="ov-card"><div class="ov-val">96%</div><div class="ov-lbl">Asistencia</div></div>
+          </div>
+
+          <!-- EXERCISE TABLE -->
+          <div class="ex-table-header">
+            <span>Ejercicio</span>
+            <span>Máquina</span>
+            <span>Series</span>
+            <span>Reps</span>
+            <span>Peso</span>
+            <span>Video</span>
+            <span>Estado</span>
+          </div>
+
+          <div class="ex-row done">
+            <div class="ex-name-cell"><div class="ex-icon-sm">🏋</div><div><div class="ex-name-txt">Peso muerto</div><div class="ex-machine-txt">Barra libre</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Barra libre</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell">8</div>
+            <div class="ex-cell">80 kg</div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm">✓</div></div>
+          </div>
+
+          <div class="ex-row done">
+            <div class="ex-name-cell"><div class="ex-icon-sm">🔄</div><div><div class="ex-name-txt">Remo con barra</div><div class="ex-machine-txt">Barra libre</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Barra libre</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell">10</div>
+            <div class="ex-cell">60 kg</div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm">✓</div></div>
+          </div>
+
+          <div class="ex-row done">
+            <div class="ex-name-cell"><div class="ex-icon-sm">⬆</div><div><div class="ex-name-txt">Dominadas</div><div class="ex-machine-txt">Barra fija</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Calisténia</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell">8</div>
+            <div class="ex-cell">Peso corp.</div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm">✓</div></div>
+          </div>
+
+          <div class="ex-row active">
+            <div class="ex-name-cell"><div class="ex-icon-sm">💪</div><div><div class="ex-name-txt">Jalón al pecho</div><div class="ex-machine-txt">Polea alta</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Polea alta</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell editable"><input value="10"></div>
+            <div class="ex-cell editable"><input value="55"></div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm"></div></div>
+          </div>
+
+          <div class="ex-row">
+            <div class="ex-name-cell"><div class="ex-icon-sm">🔁</div><div><div class="ex-name-txt">Remo en polea baja</div><div class="ex-machine-txt">Polea baja</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Polea baja</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell">12</div>
+            <div class="ex-cell">50 kg</div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm"></div></div>
+          </div>
+
+          <div class="ex-row">
+            <div class="ex-name-cell"><div class="ex-icon-sm">🦾</div><div><div class="ex-name-txt">Pullover con polea</div><div class="ex-machine-txt">Polea alta</div></div></div>
+            <div class="ex-cell" style="font-size:0.65rem;color:var(--white-faint)">Polea alta</div>
+            <div class="ex-cell">3</div>
+            <div class="ex-cell">12</div>
+            <div class="ex-cell">35 kg</div>
+            <div class="ex-cell"><div class="video-sm">▶</div></div>
+            <div class="ex-cell"><div class="check-sm"></div></div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+          <div class="panel-card">
+            <div class="panel-title">Semana actual</div>
+            <div class="day-row">
+              <div class="day-pill"><span class="d-num">L</span><span class="d-name">Pecho</span></div>
+              <div class="day-pill today"><span class="d-num" style="color:var(--gold)">M</span><span class="d-name">Espalda</span></div>
+              <div class="day-pill"><span class="d-num">X</span><span class="d-name">Piernas</span></div>
+              <div class="day-pill"><span class="d-num">J</span><span class="d-name">Hombros</span></div>
+              <div class="day-pill"><span class="d-num">V</span><span class="d-name">Brazos</span></div>
+            </div>
+          </div>
+
+          <div class="panel-card current-ex">
+            <div class="panel-title">En curso ahora</div>
+            <div class="current-ex-icon">💪</div>
+            <div class="current-ex-name">Jalón al pecho</div>
+            <div class="current-ex-meta">Máquina polea alta · Intermedio</div>
+            <div class="series-mini">
+              <div class="series-mini-row">
+                <div class="s-num">1</div>
+                <div class="s-val"><input value="10"> reps</div>
+                <div class="s-val"><input value="55"> kg</div>
+              </div>
+              <div class="series-mini-row">
+                <div class="s-num">2</div>
+                <div class="s-val"><input value="10"> reps</div>
+                <div class="s-val"><input value="55"> kg</div>
+              </div>
+              <div class="series-mini-row">
+                <div class="s-num">3</div>
+                <div class="s-val"><input value="8"> reps</div>
+                <div class="s-val"><input value="60"> kg</div>
+              </div>
+            </div>
+            <div class="complete-btn">
+              <button class="btn-gold" style="padding:12px;font-size:0.62rem">Marcar como completado ✓</button>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">En el gym ahora</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <div class="avatar" style="width:36px;height:36px;font-size:0.7rem">ML</div>
+              <div class="avatar" style="width:36px;height:36px;font-size:0.7rem">JP</div>
+              <div class="avatar" style="width:36px;height:36px;font-size:0.7rem">SR</div>
+              <div class="avatar" style="width:36px;height:36px;font-size:0.7rem">+5</div>
+            </div>
+            <div style="font-size:0.58rem;color:var(--white-faint);margin-top:8px">8 miembros presentes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

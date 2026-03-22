@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Ejercicio + Video (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.main-content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 0; height: 100%; }
+.left-pane { overflow-y: auto; border-right: 1px solid rgba(245,240,232,0.05); }
+.right-pane { overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+/* VIDEO */
+.video-area {
+  width: 100%;
+  height: 340px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+.video-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0d0d0d, #1a1208 50%, #0a0a0a);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+}
+.video-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 30px);
+}
+.play-btn {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  border: 2px solid rgba(201,168,76,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; color: var(--gold); z-index: 1;
+  backdrop-filter: blur(10px); cursor: pointer;
+}
+.video-title-overlay {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 300;
+  color: var(--white); z-index: 1;
+}
+.video-top-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  z-index: 2;
+}
+.back-btn { font-size: 0.65rem; color: var(--white); display: flex; gap: 6px; align-items: center; cursor: pointer; }
+.duration { font-size: 0.6rem; color: var(--white-dim); background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
+.video-bottom-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 16px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  z-index: 2;
+}
+.vb-progress { height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-bottom: 10px; position: relative; }
+.vb-fill { height: 100%; width: 35%; background: var(--gold); border-radius: 2px; }
+.vb-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); position: absolute; top: -4px; left: 35%; transform: translateX(-50%); }
+.vb-controls { display: flex; align-items: center; justify-content: space-between; }
+.vb-time { font-size: 0.6rem; color: var(--white-dim); }
+.vb-btns { display: flex; gap: 12px; font-size: 1rem; color: var(--white-dim); cursor: pointer; }
+
+/* Content below video */
+.ex-info-area { padding: 24px; }
+.ex-breadcrumb { font-size: 0.55rem; color: var(--white-faint); letter-spacing: 0.1em; margin-bottom: 12px; }
+.ex-breadcrumb span { color: var(--gold); }
+.ex-title-desktop { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--white); margin-bottom: 8px; }
+.ex-meta-row { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.info-block { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 12px; padding: 18px; margin-bottom: 14px; }
+.info-block-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.info-block-text { font-size: 0.72rem; font-weight: 300; line-height: 1.8; color: var(--white-dim); }
+.warning-row { display: flex; gap: 10px; margin-bottom: 8px; font-size: 0.7rem; color: var(--white-dim); line-height: 1.5; }
+.w-icon { color: var(--gold); flex-shrink: 0; }
+.alt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.alt-item { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 10px; padding: 14px; cursor: pointer; transition: border-color 0.2s; }
+.alt-item:hover { border-color: rgba(201,168,76,0.25); }
+.alt-item .a-icon { font-size: 1.2rem; margin-bottom: 8px; }
+.alt-item .a-name { font-size: 0.7rem; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+.alt-item .a-type { font-size: 0.55rem; color: var(--white-faint); letter-spacing: 0.08em; }
+
+/* Right panel */
+.rp-card { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 12px; padding: 16px; }
+.rp-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.series-desktop { display: flex; flex-direction: column; gap: 8px; }
+.series-row-d { display: grid; grid-template-columns: 24px 1fr 1fr 24px; gap: 8px; align-items: center; }
+.sd-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.5rem; color: var(--gold); }
+.sd-input { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 6px; color: var(--gold); font-size: 0.65rem; font-weight: 600; padding: 5px 8px; text-align: center; font-family: var(--font-body); width: 100%; }
+.sd-label { font-size: 0.52rem; color: var(--white-faint); letter-spacing: 0.1em; margin-top: 4px; }
+.sd-check { font-size: 0.7rem; color: #4a9e6b; }
+</style>
+</head>
+<body>
+<div class="mockup-label">03 — Ejercicio + Video · Desktop · 1280×800</div>
+<div class="desktop-frame">
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 24px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;font-family:var(--font-display);font-size:1.1rem;color:var(--white)">Aesthetic<span style="color:var(--gold)">.</span></div>
+    <div class="sidebar-nav">
+      <div class="sidebar-item active"><span class="s-icon">🏠</span><span class="s-text">Mi rutina</span></div>
+      <div class="sidebar-item"><span class="s-icon">👥</span><span class="s-text">Comunidad</span></div>
+      <div class="sidebar-item"><span class="s-icon">📍</span><span class="s-text">Check-in</span></div>
+      <div class="sidebar-item"><span class="s-icon">👤</span><span class="s-text">Mi perfil</span></div>
+      <div class="sidebar-item"><span class="s-icon">⭐</span><span class="s-text">Feedback</span></div>
+    </div>
+  </div>
+
+  <div class="desktop-main">
+    <div class="main-content-grid">
+      <div class="left-pane">
+        <!-- VIDEO -->
+        <div class="video-area">
+          <div class="video-bg">
+            <div class="video-pattern"></div>
+            <div class="play-btn">▶</div>
+            <div class="video-title-overlay">Jalón al pecho — Demostración</div>
+          </div>
+          <div class="video-top-bar">
+            <div class="back-btn">← Volver a rutina</div>
+            <div class="duration">2:34</div>
+          </div>
+          <div class="video-bottom-bar">
+            <div class="vb-progress"><div class="vb-fill"></div><div class="vb-dot"></div></div>
+            <div class="vb-controls">
+              <div class="vb-time">0:54 / 2:34</div>
+              <div class="vb-btns"><span>⏮</span><span>⏸</span><span>⏭</span><span>🔊</span><span>⛶</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="ex-info-area">
+          <div class="ex-breadcrumb">Rutina de hoy &nbsp;/&nbsp; Espalda &nbsp;/&nbsp; <span>Jalón al pecho</span></div>
+          <div class="ex-title-desktop">Jalón al pecho</div>
+          <div class="ex-meta-row">
+            <span class="tag">Espalda</span>
+            <span class="tag">Polea alta</span>
+            <span class="tag">Intermedio</span>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-title">Descripción del ejercicio</div>
+            <div class="info-block-text">El jalón al pecho trabaja principalmente el dorsal ancho, romboides y bíceps. Sentado frente a la máquina, agarrás la barra con agarre amplio y tirás hacia la parte superior del pecho manteniendo la espalda levemente inclinada. Controlá el movimiento tanto en la bajada como en la subida para máxima activación muscular.</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-title">⚠ Precauciones</div>
+            <div class="warning-row"><span class="w-icon">▸</span><span>No arquees la espalda excesivamente al bajar la barra, mantené una curvatura natural.</span></div>
+            <div class="warning-row"><span class="w-icon">▸</span><span>Evitá jalones bruscos o con impulso del cuerpo. El movimiento debe ser controlado.</span></div>
+            <div class="warning-row"><span class="w-icon">▸</span><span>Mantené los hombros bajos y alejados de las orejas durante todo el recorrido.</span></div>
+          </div>
+
+          <div class="info-block-title" style="margin-bottom:14px">Ejercicios alternativos</div>
+          <div class="alt-grid">
+            <div class="alt-item"><div class="a-icon">⬆</div><div class="a-name">Dominadas</div><div class="a-type">Calisténia</div></div>
+            <div class="alt-item"><div class="a-icon">🔄</div><div class="a-name">Jalón neutro</div><div class="a-type">Polea · Agarre neutro</div></div>
+            <div class="alt-item"><div class="a-icon">💪</div><div class="a-name">Pullover</div><div class="a-type">Mancuerna</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-pane">
+        <div class="rp-card" style="background:linear-gradient(135deg,#1a1208,#0d0d0a);border-color:rgba(201,168,76,0.2)">
+          <div class="rp-title">Series de hoy</div>
+          <div style="margin-bottom:8px">
+            <div class="sd-label">Serie · Repeticiones · Peso (kg)</div>
+          </div>
+          <div class="series-desktop">
+            <div class="series-row-d">
+              <div class="sd-num">1</div>
+              <input class="sd-input" value="10">
+              <input class="sd-input" value="55">
+              <span class="sd-check">✓</span>
+            </div>
+            <div class="series-row-d">
+              <div class="sd-num">2</div>
+              <input class="sd-input" value="10">
+              <input class="sd-input" value="55">
+              <span style="color:var(--white-faint);font-size:0.7rem">—</span>
+            </div>
+            <div class="series-row-d">
+              <div class="sd-num">3</div>
+              <input class="sd-input" value="8">
+              <input class="sd-input" value="60">
+              <span style="color:var(--white-faint);font-size:0.7rem">—</span>
+            </div>
+          </div>
+          <div style="margin-top:14px">
+            <button class="btn-gold" style="padding:12px;font-size:0.62rem">Completar serie 2 →</button>
+          </div>
+        </div>
+
+        <div class="rp-card">
+          <div class="rp-title">Historial · Jalón al pecho</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--white-dim);border-bottom:1px solid rgba(245,240,232,0.05);padding-bottom:8px">
+              <span>15 Mar</span><span>3 × 10 reps</span><span style="color:var(--gold)">50 kg</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--white-dim);border-bottom:1px solid rgba(245,240,232,0.05);padding-bottom:8px">
+              <span>8 Mar</span><span>3 × 10 reps</span><span style="color:var(--gold)">50 kg</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--white-dim)">
+              <span>1 Mar</span><span>3 × 8 reps</span><span style="color:var(--gold)">45 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rp-card">
+          <div class="rp-title">Músculos trabajados</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span class="tag">Dorsal ancho</span>
+            <span class="tag">Romboides</span>
+            <span class="tag">Bíceps</span>
+            <span class="tag">Core</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

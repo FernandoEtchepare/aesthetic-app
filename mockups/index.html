@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetic Gym App — Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a; --black-mid: #111111; --black-card: #141414;
+  --gold: #C9A84C; --gold-light: #E8C96A;
+  --white: #f5f0e8; --white-dim: rgba(245,240,232,0.7); --white-faint: rgba(245,240,232,0.3);
+  --font-display: 'Cormorant Garamond', serif; --font-body: 'Montserrat', sans-serif;
+}
+body {
+  background: var(--black);
+  font-family: var(--font-body);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* HEADER */
+.page-header {
+  padding: 80px 80px 60px;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  background: var(--black-mid);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.05), transparent 60%);
+  pointer-events: none;
+}
+.page-header .label {
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 16px;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300; color: var(--white); line-height: 1.1;
+  margin-bottom: 12px;
+}
+.page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header p {
+  font-size: 0.75rem; font-weight: 300; color: var(--white-faint);
+  max-width: 500px; line-height: 1.8;
+}
+
+/* CONTENT */
+.content { padding: 60px 80px; }
+
+.section-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 300; color: var(--white);
+}
+.section-head h2 em { font-style: italic; color: var(--gold); }
+.section-head::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+/* GRID */
+.screens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.screen-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+  display: block;
+}
+.screen-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.card-preview {
+  height: 160px;
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+  border-bottom: 1px solid rgba(245,240,232,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-preview::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg, rgba(201,168,76,0.03) 0, rgba(201,168,76,0.03) 1px, transparent 0, transparent 30px
+  );
+}
+
+.card-num {
+  position: absolute; top: 12px; left: 14px;
+  font-size: 0.52rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(201,168,76,0.4);
+  font-family: var(--font-body);
+}
+
+.card-platform {
+  position: absolute; top: 12px; right: 14px;
+  font-size: 0.48rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  background: rgba(245,240,232,0.05);
+  border-radius: 4px; padding: 2px 6px;
+}
+
+.card-info { padding: 14px 16px; }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--white); margin-bottom: 4px;
+}
+.card-desc {
+  font-size: 0.6rem; color: var(--white-faint);
+  line-height: 1.5; letter-spacing: 0.03em;
+}
+
+/* FOOTER */
+.page-footer {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 32px 80px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 600; color: var(--white);
+}
+.footer-brand span { color: var(--gold); }
+.footer-meta {
+  font-size: 0.58rem; color: var(--white-faint); letter-spacing: 0.1em;
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="label">Aesthetic Gym App · Mockups UI/UX</span>
+  <h1>Pantallas de<br><em>diseño</em></h1>
+  <p>Mockups de alta fidelidad para la app de Aesthetic Gym. Incluye versiones mobile y desktop para todas las secciones principales.</p>
+</div>
+
+<div class="content">
+
+  <!-- MOBILE -->
+  <div class="section-head">
+    <h2>Mobile &nbsp;<em>390 × 844</em></h2>
+  </div>
+
+  <div class="screens-grid">
+    <a href="mobile/01-login.html" class="screen-card">
+      <div class="card-preview">
+        🔐
+        <div class="card-num">01</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Login</div>
+        <div class="card-desc">Inicio de sesión con email/contraseña, Google y Apple.</div>
+      </div>
+    </a>
+    <a href="mobile/02-registro.html" class="screen-card">
+      <div class="card-preview">
+        📝
+        <div class="card-num">02</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Registro</div>
+        <div class="card-desc">Alta de usuario con datos personales y proveedores sociales.</div>
+      </div>
+    </a>
+    <a href="mobile/03-rutina.html" class="screen-card">
+      <div class="card-preview">
+        💪
+        <div class="card-num">03</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Rutina del día</div>
+        <div class="card-desc">Listado de ejercicios, series, repeticiones y pesos editables.</div>
+      </div>
+    </a>
+    <a href="mobile/04-ejercicio-video.html" class="screen-card">
+      <div class="card-preview">
+        ▶
+        <div class="card-num">04</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Ejercicio + Video</div>
+        <div class="card-desc">Reproductor, descripción, precauciones y ejercicios alternativos.</div>
+      </div>
+    </a>
+    <a href="mobile/05-perfil.html" class="screen-card">
+      <div class="card-preview">
+        👤
+        <div class="card-num">05</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Perfil</div>
+        <div class="card-desc">Foto, datos personales, membresía activa y seguridad.</div>
+      </div>
+    </a>
+    <a href="mobile/06-comunidad.html" class="screen-card">
+      <div class="card-preview">
+        👥
+        <div class="card-num">06</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Comunidad</div>
+        <div class="card-desc">Check-in, quién está en el gym, publicaciones y feed.</div>
+      </div>
+    </a>
+    <a href="mobile/07-feedback.html" class="screen-card">
+      <div class="card-preview">
+        ⭐
+        <div class="card-num">07</div>
+        <div class="card-platform">Mobile</div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Feedback</div>
+        <div class="card-desc">Calificación de app y gym, comentarios y reseñas anteriores.</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- DESKTOP -->
+  <div class="section-head">
+    <h2>Desktop &nbsp;<em>1280 × 800</em></h2>
+  </div>
+
+  <div class="screens-grid">
+    <a href="desktop/01-login.html" class="screen-card">
+      <div class="card-preview">🔐<div class="card-num">01</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Login</div><div class="card-desc">Pantalla de acceso con layout de dos columnas.</div></div>
+    </a>
+    <a href="desktop/02-rutina.html" class="screen-card">
+      <div class="card-preview">💪<div class="card-num">02</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Rutina del día</div><div class="card-desc">Dashboard principal con sidebar y rutina expandida.</div></div>
+    </a>
+    <a href="desktop/03-ejercicio-video.html" class="screen-card">
+      <div class="card-preview">▶<div class="card-num">03</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Ejercicio + Video</div><div class="card-desc">Vista de ejercicio con video y panel de información.</div></div>
+    </a>
+    <a href="desktop/04-perfil.html" class="screen-card">
+      <div class="card-preview">👤<div class="card-num">04</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Perfil</div><div class="card-desc">Gestión de cuenta y datos personales.</div></div>
+    </a>
+    <a href="desktop/05-comunidad.html" class="screen-card">
+      <div class="card-preview">👥<div class="card-num">05</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Comunidad</div><div class="card-desc">Feed de publicaciones con panel de check-in lateral.</div></div>
+    </a>
+    <a href="desktop/06-feedback.html" class="screen-card">
+      <div class="card-preview">⭐<div class="card-num">06</div><div class="card-platform">Desktop</div></div>
+      <div class="card-info"><div class="card-title">Feedback</div><div class="card-desc">Formulario de reseñas con historial de feedback.</div></div>
+    </a>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <div class="footer-brand">Aesthetic<span>.</span>Gym App</div>
+  <div class="footer-meta">Mockups UI/UX · v1.0 · 2026</div>
+</div>
+
+</body>
+</html>

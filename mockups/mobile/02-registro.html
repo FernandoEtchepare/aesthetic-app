@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Registro (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  padding: 32px 28px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--black);
+}
+
+.back-btn {
+  font-size: 0.9rem;
+  color: var(--gold);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.reg-heading h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.reg-heading h1 em { font-style: italic; color: var(--gold); }
+
+.reg-heading p {
+  font-size: 0.62rem;
+  color: var(--white-faint);
+  letter-spacing: 0.05em;
+}
+
+.form-area {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-row {
+  position: relative;
+}
+
+.input-row .input-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--white-faint);
+}
+
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.strength-bar span {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+  opacity: 0.3;
+}
+
+.strength-bar span:nth-child(1),
+.strength-bar span:nth-child(2) { opacity: 1; }
+
+.strength-label {
+  font-size: 0.52rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.6rem;
+  color: var(--white-faint);
+  line-height: 1.5;
+}
+
+.terms .checkbox {
+  width: 16px; height: 16px;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 4px;
+  background: rgba(201,168,76,0.1);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  color: var(--gold);
+}
+
+.terms a { color: var(--gold); }
+
+.or-divider { width: 100%; }
+
+.social-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btns .btn-outline {
+  flex: 1;
+  font-size: 0.58rem;
+  padding: 12px 8px;
+  gap: 6px;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--white-faint);
+}
+
+.login-link a { color: var(--gold); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="mockup-label">02 — Registro · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <div class="back-btn">← Volver</div>
+
+      <div class="reg-heading">
+        <h1>Crear<br><em>cuenta</em></h1>
+        <p>Completá tus datos para comenzar</p>
+      </div>
+
+      <div class="form-area">
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Fernando Etchepare">
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <div class="input-row">
+            <input type="email" placeholder="tu@email.com">
+            <span class="input-icon">✉</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <div class="input-row">
+            <input type="password" placeholder="Mínimo 8 caracteres">
+            <span class="input-icon">👁</span>
+          </div>
+          <div class="strength-bar">
+            <span></span><span></span><span style="opacity:0.15"></span><span style="opacity:0.15"></span>
+          </div>
+          <div class="strength-label">Seguridad media</div>
+        </div>
+        <div class="input-group">
+          <label>Confirmar contraseña</label>
+          <div class="input-row">
+            <input type="password" placeholder="Repetí tu contraseña">
+            <span class="input-icon">👁</span>
+          </div>
+        </div>
+
+        <div class="terms">
+          <div class="checkbox">✓</div>
+          <span>Acepto los <a>Términos de uso</a> y la <a>Política de privacidad</a> de Aesthetic Gym.</span>
+        </div>
+
+        <button class="btn-gold">Crear cuenta</button>
+      </div>
+
+      <div class="or-divider">o registrate con</div>
+
+      <div class="social-btns">
+        <button class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+            <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor">
+            <path d="M12.7 0c.07.97-.28 1.94-.85 2.66-.57.72-1.46 1.28-2.35 1.21-.1-.9.3-1.84.84-2.5C10.9.67 11.84.1 12.7 0zm3.3 13.27c-.5.97-1.05 1.9-1.85 2.74-.77.8-1.57 1.35-2.5 1.35-.9 0-1.5-.5-2.38-.5-.92 0-1.6.5-2.45.5-.9 0-1.73-.57-2.5-1.4C2.1 14.6.9 12.3.9 10.07c0-3.8 2.46-5.8 4.9-5.8 1 0 1.85.56 2.5.56.6 0 1.55-.6 2.7-.6 1.1 0 2.8.6 3.8 2.2-.1.07-2.3 1.33-2.3 3.97 0 3.1 2.7 4.14 2.5 4.87z"/>
+          </svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="login-link">¿Ya tenés cuenta? <a>Iniciá sesión</a></div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

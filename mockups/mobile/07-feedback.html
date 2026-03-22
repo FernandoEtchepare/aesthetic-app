@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Feedback (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen-inner {
+  min-height: 100%;
+  background: var(--black);
+  padding-bottom: calc(var(--bottom-nav) + 16px);
+}
+
+.fb-header {
+  padding: 20px 20px 20px;
+  background: var(--black-mid);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.fb-header .app-section-label { margin-bottom: 4px; }
+.fb-header .app-section-title { font-size: 1.3rem; }
+
+/* RATING CARDS */
+.rating-section {
+  padding: 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rating-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.rating-card-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.rating-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.star {
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0.25;
+  transition: opacity 0.2s;
+}
+
+.star.filled { opacity: 1; color: var(--gold); }
+.star.half { opacity: 0.6; color: var(--gold); }
+
+.rating-val {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--white-faint);
+}
+
+.rating-val strong { color: var(--gold); font-size: 1rem; }
+
+/* FORM */
+.fb-form {
+  padding: 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fb-form textarea {
+  resize: none;
+  height: 100px;
+  font-size: 0.78rem;
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-chip {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,240,232,0.12);
+  color: var(--white-faint);
+  cursor: pointer;
+  background: transparent;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+
+.category-chip.selected {
+  border-color: rgba(201,168,76,0.4);
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+/* PREVIOUS */
+.prev-section {
+  padding: 20px 20px 0;
+}
+
+.prev-title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prev-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(245,240,232,0.06);
+}
+
+.prev-item {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.04);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.prev-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.prev-date {
+  font-size: 0.55rem;
+  color: var(--white-faint);
+  letter-spacing: 0.08em;
+}
+
+.prev-stars {
+  display: flex;
+  gap: 2px;
+  font-size: 0.7rem;
+  color: var(--gold);
+}
+
+.prev-text {
+  font-size: 0.68rem;
+  color: var(--white-dim);
+  line-height: 1.5;
+}
+
+.prev-tag {
+  display: inline-block;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-top: 6px;
+}
+
+.submit-area {
+  padding: 16px 20px 0;
+}
+</style>
+</head>
+<body>
+<div class="mockup-label">07 — Feedback · Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons"><span>▲▲▲</span><span>🔋</span></div>
+  </div>
+  <div class="screen">
+    <div class="screen-inner">
+
+      <!-- HEADER -->
+      <div class="fb-header">
+        <div class="app-section-label">Tu opinión importa</div>
+        <div class="app-section-title">Feedback &amp; <em>Reseñas</em></div>
+      </div>
+
+      <!-- RATINGS -->
+      <div class="rating-section">
+        <div class="rating-card">
+          <div class="rating-card-label">Calificación</div>
+          <div class="rating-card-title">¿Cómo calificás la app?</div>
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star half">★</span>
+          </div>
+          <div class="rating-val"><strong>4.5</strong> / 5</div>
+        </div>
+
+        <div class="rating-card">
+          <div class="rating-card-label">Calificación</div>
+          <div class="rating-card-title">¿Cómo calificás el gimnasio?</div>
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+          </div>
+          <div class="rating-val"><strong>5.0</strong> / 5</div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="fb-form">
+        <div class="input-group">
+          <label>Categoría</label>
+          <div class="category-chips">
+            <button class="category-chip selected">App</button>
+            <button class="category-chip">Equipamiento</button>
+            <button class="category-chip">Coaches</button>
+            <button class="category-chip">Horarios</button>
+            <button class="category-chip">Limpieza</button>
+            <button class="category-chip">Ambiente</button>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Tu comentario</label>
+          <textarea placeholder="Contanos tu experiencia o sugerencia..."></textarea>
+        </div>
+      </div>
+
+      <div class="submit-area">
+        <button class="btn-gold">Enviar feedback</button>
+      </div>
+
+      <!-- PREVIOUS -->
+      <div class="prev-section">
+        <div class="prev-title">Mis reseñas anteriores</div>
+
+        <div class="prev-item">
+          <div class="prev-top">
+            <span class="prev-date">15 de marzo, 2026</span>
+            <div class="prev-stars">★★★★★</div>
+          </div>
+          <div class="prev-text">El equipamiento está siempre en perfectas condiciones y los coaches son muy atentos.</div>
+          <div class="prev-tag">Equipamiento</div>
+        </div>
+
+        <div class="prev-item">
+          <div class="prev-top">
+            <span class="prev-date">1 de marzo, 2026</span>
+            <div class="prev-stars">★★★★☆</div>
+          </div>
+          <div class="prev-text">Me gustaría que agreguen más videos de ejercicios en la app. La navegación es muy fluida.</div>
+          <div class="prev-tag">App</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-text">Rutina</div></div>
+      <div class="nav-item"><div class="nav-icon">👥</div><div class="nav-text">Comunidad</div></div>
+      <div class="nav-item"><div class="nav-icon">📍</div><div class="nav-text">Check-in</div></div>
+      <div class="nav-item"><div class="nav-icon">👤</div><div class="nav-text">Perfil</div></div>
+      <div class="nav-item active"><div class="nav-icon">⭐</div><div class="nav-text">Feedback</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
