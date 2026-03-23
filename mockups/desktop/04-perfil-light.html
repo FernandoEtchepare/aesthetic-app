@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<title>Mockup — Perfil Light (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+/* ── LIGHT THEME OVERRIDES ── */
+:root {
+  --l-bg:         #f0ebe2;
+  --l-surface:    #faf7f2;
+  --l-card:       #ffffff;
+  --l-sidebar:    #e8e2d8;
+  --l-input:      #f0ece4;
+  --l-border:     rgba(0,0,0,0.07);
+  --l-text:       #1a1a17;
+  --l-text-dim:   rgba(26,26,23,0.55);
+  --l-text-faint: rgba(26,26,23,0.35);
+  --l-gold:       #9a7a2e;
+  --l-gold-pale:  rgba(154,122,46,0.1);
+  --l-gold-glow:  rgba(154,122,46,0.25);
+}
+
+body { padding: 48px 24px; background: #ddd8cf; }
+
+/* ── DESKTOP FRAME ── */
+.desktop-frame { background: var(--l-bg) !important; border: 1px solid rgba(0,0,0,0.1) !important; box-shadow: 0 8px 40px rgba(0,0,0,0.15) !important; }
+
+/* ── SIDEBAR ── */
+.desktop-sidebar { background: var(--l-sidebar) !important; border-right: 1px solid var(--l-border) !important; }
+.sidebar-item { color: var(--l-text-dim) !important; }
+.sidebar-item:hover { background: rgba(0,0,0,0.04) !important; color: var(--l-text) !important; }
+.sidebar-item.active { background: rgba(154,122,46,0.08) !important; color: var(--l-gold) !important; }
+.s-icon svg { color: var(--l-text-faint) !important; opacity: 1 !important; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { color: var(--l-gold) !important; }
+.s-text { color: inherit !important; }
+
+/* ── TOPBAR ── */
+.desktop-topbar { background: var(--l-surface) !important; border-bottom: 1px solid var(--l-border) !important; }
+
+/* ── MAIN ── */
+.desktop-main { background: var(--l-bg) !important; }
+
+/* ── LAYOUT ── */
+.profile-layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; padding: 24px; }
+.left-col  { display: flex; flex-direction: column; gap: 16px; }
+.right-col { display: flex; flex-direction: column; gap: 16px; }
+.two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── CARDS ── */
+.pc { background: var(--l-card); border: 1px solid var(--l-border); border-radius: 14px; padding: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+.pc-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--l-gold); margin-bottom: 16px; }
+
+/* ── AVATAR ── */
+.big-av {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, #ede4d0, #e8dfc8);
+  border: 2px solid rgba(154,122,46,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 2rem; color: var(--l-gold);
+  margin: 0 auto 12px; position: relative;
+  box-shadow: 0 0 20px rgba(154,122,46,0.12);
+}
+.av-edit {
+  position: absolute; bottom: 0; right: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--l-gold); display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem; color: #fff; border: 2px solid var(--l-card);
+}
+
+/* ── PROFILE TEXT ── */
+.p-name  { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--l-text); text-align: center; margin-bottom: 4px; }
+.p-email { font-size: 0.6rem; color: var(--l-text-dim); text-align: center; margin-bottom: 12px; }
+.p-since { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--l-gold); }
+
+/* ── STATS ── */
+.stat-mini { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06); border-radius: 8px; padding: 10px; text-align: center; }
+.stat-mini .sv { font-family: var(--font-display); font-size: 1.3rem; color: var(--l-gold); line-height: 1; display: block; }
+.stat-mini .sl { font-size: 0.5rem; color: var(--l-text-faint); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; display: block; }
+
+/* ── MEMBERSHIP BADGE ── */
+.mem-badge {
+  background: linear-gradient(135deg, #ede4d0, #f5f1e8);
+  border: 1px solid rgba(154,122,46,0.3);
+  border-radius: 12px; padding: 16px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.mem-tier-l { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--l-gold); margin-bottom: 3px; }
+.mem-name-l { font-family: var(--font-display); font-size: 1.2rem; color: var(--l-text); }
+.mem-exp-l  { font-size: 0.55rem; color: var(--l-text-dim); margin-top: 2px; }
+
+/* ── INPUTS ── */
+.input-group label { color: var(--l-text-faint) !important; }
+input, select, textarea { background: var(--l-input) !important; border-color: var(--l-border) !important; color: var(--l-text) !important; }
+input::placeholder { color: var(--l-text-faint) !important; }
+
+/* ── GOLD BUTTON ── */
+.btn-gold { background: var(--l-gold) !important; color: #fff !important; }
+</style>
+</head>
+<body>
+<div class="mockup-label">04 — Perfil Light · Desktop · 1280×800</div>
+<div class="desktop-frame">
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:20px;">
+      <img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;">
+    </div>
+    <div class="sidebar-nav">
+      <a href="02-rutina.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+        <span class="s-text">Mi rutina</span>
+      </div></a>
+      <a href="05-comunidad.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-3.3-2.7-6-6-6"/></svg></span>
+        <span class="s-text">Comunidad</span>
+      </div></a>
+      <a href="07-checkin.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2"/></svg></span>
+        <span class="s-text">Check-in</span>
+      </div></a>
+      <a href="04-perfil-light.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
+        <span class="s-text">Mi perfil</span>
+      </div></a>
+      <a href="06-feedback.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Feedback</span>
+      </div></a>
+    </div>
+  </div>
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div><div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--l-text)">Mi <em style="font-style:italic;color:var(--l-gold)">perfil</em></div></div>
+      <button class="btn-gold" style="width:auto;padding:10px 24px;font-size:0.62rem">Guardar cambios</button>
+    </div>
+    <div class="profile-layout">
+      <div class="left-col">
+        <div class="pc">
+          <div class="big-av">FE<div class="av-edit">✎</div></div>
+          <div class="p-name">Fernando Etchepare</div>
+          <div class="p-email">fer@email.com</div>
+          <div class="p-since"><span>★</span><span>Miembro desde Mar 2026</span></div>
+          <div class="stat-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px">
+            <div class="stat-mini"><div class="sv">42</div><div class="sl">Sesiones</div></div>
+            <div class="stat-mini"><div class="sv">18</div><div class="sl">Racha</div></div>
+            <div class="stat-mini"><div class="sv">96%</div><div class="sl">Asistencia</div></div>
+            <div class="stat-mini"><div class="sv">6.2k</div><div class="sl">kg levantados</div></div>
+          </div>
+        </div>
+        <div class="mem-badge">
+          <div>
+            <div class="mem-tier-l">Membresía activa</div>
+            <div class="mem-name-l">Aesthetic</div>
+            <div class="mem-exp-l">Vence 22 abr 2026</div>
+          </div>
+          <span style="font-size:1.5rem;opacity:0.5">🏆</span>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="pc">
+          <div class="pc-title">Datos personales</div>
+          <div class="two-col" style="margin-bottom:12px">
+            <div class="input-group"><label>Nombre</label><input type="text" value="Fernando"></div>
+            <div class="input-group"><label>Apellido</label><input type="text" value="Etchepare"></div>
+          </div>
+          <div class="two-col" style="margin-bottom:12px">
+            <div class="input-group"><label>Email</label><input type="email" value="fer@email.com"></div>
+            <div class="input-group"><label>Teléfono</label><input type="tel" value="+54 223 000-0000"></div>
+          </div>
+          <div class="two-col">
+            <div class="input-group"><label>Edad</label><input type="number" value="29"></div>
+            <div class="input-group"><label>Objetivo</label><select><option>Definición</option><option>Volumen</option><option>Fuerza</option></select></div>
+          </div>
+        </div>
+        <div class="pc">
+          <div class="pc-title">Seguridad</div>
+          <div class="two-col">
+            <div class="input-group"><label>Contraseña actual</label><input type="password" placeholder="••••••••"></div>
+            <div class="input-group"><label>Nueva contraseña</label><input type="password" placeholder="Mínimo 8 caracteres"></div>
+          </div>
+        </div>
+        <div class="pc">
+          <div class="pc-title">Notificaciones</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.72rem;color:var(--l-text-dim)">Recordatorio de entrenamiento</span>
+              <div style="width:40px;height:22px;background:var(--l-gold);border-radius:11px;position:relative"><div style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.72rem;color:var(--l-text-dim)">Novedades de la comunidad</span>
+              <div style="width:40px;height:22px;background:var(--l-gold);border-radius:11px;position:relative"><div style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.72rem;color:var(--l-text-faint)">Publicaciones del gym</span>
+              <div style="width:40px;height:22px;background:rgba(0,0,0,0.1);border-radius:11px;position:relative"><div style="position:absolute;left:2px;top:2px;width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,0.2)"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
