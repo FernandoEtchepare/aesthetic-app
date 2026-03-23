@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mockup — Perfil Socio (Profesor Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: var(--screen-h);
+}
+
+/* PROFILE HERO */
+.profile-hero {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #1a1208, #0d0d0a);
+  padding: calc(var(--status-bar) + 2px) 20px 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.back-link {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.options-btn {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  padding: 4px;
+}
+
+.options-btn span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--white-faint);
+}
+
+.profile-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1208, #111);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.profile-info .prof-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.profile-info .prof-email {
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: var(--white-faint);
+  margin-bottom: 6px;
+}
+
+.member-since {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.55rem;
+  color: var(--gold);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.stat-box {
+  background: rgba(245,240,232,0.03);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.46rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+/* ACTION BUTTONS */
+.action-row {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--black);
+  border-bottom: 1px solid rgba(245,240,232,0.04);
+}
+
+.action-btn {
+  flex: 1;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: transparent;
+  color: var(--gold);
+  border-radius: 10px;
+  padding: 10px 4px;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* SCREEN INNER */
+.screen-inner {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding-bottom: calc(80px + 16px);
+}
+.screen-inner::-webkit-scrollbar { display: none; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 20px 12px;
+}
+
+.section-head .sec-label {
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+.routine-card {
+  margin: 0 20px 4px;
+  background: #141414;
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.routine-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.tags-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.muscle-tag {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.routine-meta {
+  font-size: 0.58rem;
+  color: var(--white-faint);
+  margin-bottom: 8px;
+}
+
+.routine-link {
+  font-size: 0.6rem;
+  color: var(--gold);
+  text-decoration: none;
+  display: block;
+  margin-top: 8px;
+}
+
+/* PROGRESS CHART */
+.progress-chart {
+  margin: 0 20px 4px;
+}
+
+.days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-box {
+  border-radius: 6px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.day-box.done {
+  background: rgba(201,168,76,0.25);
+  border: 1px solid rgba(201,168,76,0.4);
+}
+
+.day-box.today {
+  background: var(--gold);
+}
+
+.day-box.empty {
+  background: rgba(245,240,232,0.03);
+  border: 1px solid rgba(245,240,232,0.06);
+}
+
+.day-letter {
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--white-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.day-box.done .day-letter { color: var(--gold); }
+.day-box.today .day-letter { color: #0a0a0a; font-weight: 700; }
+
+/* AWARDS */
+.awards-list {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(245,240,232,0.02);
+  border-radius: 8px;
+}
+
+.award-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.award-text {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  margin-bottom: 2px;
+}
+
+.award-by {
+  font-size: 0.55rem;
+  color: var(--white-faint);
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: var(--bottom-nav);
+  background: rgba(10,10,10,0.97);
+  border-top: 1px solid rgba(201,168,76,0.12);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 12px;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  min-width: 52px;
+  text-decoration: none;
+}
+
+.nav-item .nav-icon { color: var(--white-faint); }
+.nav-item .nav-text {
+  font-size: 0.5rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+.nav-item.active .nav-icon,
+.nav-item.active .nav-text { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="mockup-label">04 — Perfil Socio · Profesor Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons">
+      <span>▲▲▲</span>
+      <span>WiFi</span>
+      <span>🔋</span>
+    </div>
+  </div>
+  <div class="screen">
+
+    <div class="profile-hero">
+      <div class="hero-top">
+        <a href="03-socios.html" class="back-link">← Socios</a>
+        <div class="options-btn">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="profile-avatar">FE</div>
+        <div class="profile-info">
+          <div class="prof-name">Fernando Etchepare</div>
+          <div class="prof-email">fernando@email.com</div>
+          <div class="member-since">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Socio desde enero 2025
+          </div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-value">42</span>
+          <span class="stat-label">Sesiones</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">18</span>
+          <span class="stat-label">Racha</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">96%</span>
+          <span class="stat-label">Asistencia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <div class="action-btn">Asignar rutina</div>
+      <div class="action-btn">Mensaje</div>
+      <div class="action-btn">Premiar</div>
+    </div>
+
+    <div class="screen-inner">
+
+      <div class="section-head">
+        <span class="sec-label">Rutina actual</span>
+      </div>
+
+      <div class="routine-card">
+        <div class="routine-name">Rutina A · Full Body</div>
+        <div class="tags-row">
+          <span class="muscle-tag">Espalda</span>
+          <span class="muscle-tag">Pecho</span>
+          <span class="muscle-tag">Piernas</span>
+        </div>
+        <div class="routine-meta">8 ejercicios · última modificación hace 2 días</div>
+        <a href="06-crear-rutina.html" class="routine-link">Ver rutina completa →</a>
+      </div>
+
+      <div class="section-head" style="margin-top:16px">
+        <span class="sec-label">Progreso semanal</span>
+      </div>
+
+      <div class="progress-chart">
+        <div class="days-row">
+          <div class="day-box done">
+            <span class="day-letter">L</span>
+          </div>
+          <div class="day-box done">
+            <span class="day-letter">M</span>
+          </div>
+          <div class="day-box done">
+            <span class="day-letter">X</span>
+          </div>
+          <div class="day-box done">
+            <span class="day-letter">J</span>
+          </div>
+          <div class="day-box today">
+            <span class="day-letter">V</span>
+          </div>
+          <div class="day-box empty">
+            <span class="day-letter">S</span>
+          </div>
+          <div class="day-box empty">
+            <span class="day-letter">D</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:16px">
+        <span class="sec-label">Historial de premios</span>
+      </div>
+
+      <div class="awards-list">
+        <div class="award-item">
+          <div class="award-icon">⭐</div>
+          <div>
+            <div class="award-text">Estrella de asistencia · marzo 2026</div>
+            <div class="award-by">Otorgada por Carlos Méndez</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div>
+            <div class="award-text">Alumno del mes · enero 2026</div>
+            <div class="award-by">Otorgada por Carlos Méndez</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="02-inicio.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="nav-text">Inicio</span>
+      </a>
+      <a href="03-socios.html" class="nav-item active">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span class="nav-text">Socios</span>
+      </a>
+      <a href="05-rutinas.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="9" y1="16" x2="13" y2="16"/>
+        </svg>
+        <span class="nav-text">Rutinas</span>
+      </a>
+      <a href="07-mensajes.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="nav-text">Mensajes</span>
+      </a>
+      <a href="08-premios.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="7"/>
+          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+        </svg>
+        <span class="nav-text">Premios</span>
+      </a>
+    </nav>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mockup — Premios Profesor (Mobile)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+.screen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: var(--screen-h);
+}
+
+.prof-header {
+  flex-shrink: 0;
+  background: linear-gradient(to bottom, #111111, #0a0a0a);
+  padding: calc(var(--status-bar) + 4px) 20px 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.page-title em { font-style: italic; color: var(--gold); }
+
+.month-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.month-label {
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: var(--white-faint);
+}
+
+.month-arrow {
+  font-size: 0.7rem;
+  color: var(--white-faint);
+  cursor: pointer;
+}
+
+/* SCREEN INNER */
+.screen-inner {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding-bottom: calc(80px + 16px);
+}
+.screen-inner::-webkit-scrollbar { display: none; }
+
+/* ALUMNO DEL MES */
+.alumno-card {
+  margin: 16px 20px;
+  background: linear-gradient(135deg, #1a1208, #2a1e08);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.alumno-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(201,168,76,0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.alumno-eyebrow {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.alumno-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.alumno-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a1e08, #1a1208);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.alumno-info {
+  flex: 1;
+}
+
+.alumno-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.alumno-stats {
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  margin-bottom: 3px;
+}
+
+.alumno-date {
+  font-size: 0.55rem;
+  color: var(--white-faint);
+}
+
+.alumno-trophy {
+  font-size: 2rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.change-btn {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid rgba(201,168,76,0.4);
+  background: transparent;
+  color: var(--gold);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* SECTION */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 20px 12px;
+}
+
+.section-head .sec-label {
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+/* AWARD LIST */
+.award-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245,240,232,0.04);
+}
+
+.award-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1208, #111);
+  border: 1.5px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.award-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.award-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.award-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.earned-badge {
+  font-size: 0.7rem;
+}
+
+.award-stats {
+  font-size: 0.56rem;
+  color: var(--white-faint);
+}
+
+.award-btns {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.quick-award-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: var(--bottom-nav);
+  background: rgba(10,10,10,0.97);
+  border-top: 1px solid rgba(201,168,76,0.12);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 12px;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  min-width: 52px;
+  text-decoration: none;
+}
+
+.nav-item .nav-icon { color: var(--white-faint); }
+.nav-item .nav-text {
+  font-size: 0.5rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white-faint);
+}
+
+.nav-item.active .nav-icon,
+.nav-item.active .nav-text { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="mockup-label">08 — Premios · Profesor Mobile · 390×844</div>
+<div class="phone-frame">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="icons">
+      <span>▲▲▲</span>
+      <span>WiFi</span>
+      <span>🔋</span>
+    </div>
+  </div>
+  <div class="screen">
+
+    <div class="prof-header">
+      <div class="header-top">
+        <span class="page-title"><em>Premios</em></span>
+      </div>
+      <div class="month-row">
+        <span class="month-arrow">‹</span>
+        <span class="month-label">Marzo 2026</span>
+        <span class="month-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="screen-inner">
+
+      <div class="alumno-card">
+        <div class="alumno-eyebrow">Alumno del mes · Marzo 2026</div>
+        <div class="alumno-content">
+          <div class="alumno-avatar">MA</div>
+          <div class="alumno-info">
+            <div class="alumno-name">María Alvarado</div>
+            <div class="alumno-stats">96% asistencia · 58 sesiones</div>
+            <div class="alumno-date">Nominada el 20 mar 2026</div>
+          </div>
+          <div class="alumno-trophy">🏆</div>
+        </div>
+        <button class="change-btn">Cambiar nominación</button>
+      </div>
+
+      <div class="section-head">
+        <span class="sec-label">Dar reconocimiento</span>
+      </div>
+
+      <div class="award-list">
+
+        <div class="award-item">
+          <div class="award-avatar">FE</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Fernando Etchepare</span>
+              <span class="earned-badge">⭐</span>
+            </div>
+            <div class="award-stats">42 sesiones · 96% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">MA</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">María Alvarado</span>
+              <span class="earned-badge">🏆</span>
+            </div>
+            <div class="award-stats">58 sesiones · 96% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">LG</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Lucas García</span>
+            </div>
+            <div class="award-stats">28 sesiones · 78% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">SO</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Sofía Rodríguez</span>
+              <span class="earned-badge">⭐</span>
+            </div>
+            <div class="award-stats">38 sesiones · 92% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">PA</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Pablo Méndez</span>
+            </div>
+            <div class="award-stats">22 sesiones · 70% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">VR</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Valentina Ruiz</span>
+            </div>
+            <div class="award-stats">35 sesiones · 88% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">CA</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Carlos Acosta</span>
+            </div>
+            <div class="award-stats">18 sesiones · 60% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">AL</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Alejandro López</span>
+            </div>
+            <div class="award-stats">30 sesiones · 85% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">NA</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Natalia Flores</span>
+            </div>
+            <div class="award-stats">25 sesiones · 75% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+        <div class="award-item">
+          <div class="award-avatar">JU</div>
+          <div class="award-info">
+            <div class="award-name-row">
+              <span class="award-name">Julián Torres</span>
+            </div>
+            <div class="award-stats">44 sesiones · 90% asistencia</div>
+          </div>
+          <div class="award-btns">
+            <div class="quick-award-btn">⭐</div>
+            <div class="quick-award-btn">💳</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="02-inicio.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="nav-text">Inicio</span>
+      </a>
+      <a href="03-socios.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span class="nav-text">Socios</span>
+      </a>
+      <a href="05-rutinas.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="9" y1="16" x2="13" y2="16"/>
+        </svg>
+        <span class="nav-text">Rutinas</span>
+      </a>
+      <a href="07-mensajes.html" class="nav-item">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="nav-text">Mensajes</span>
+      </a>
+      <a href="08-premios.html" class="nav-item active">
+        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="7"/>
+          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+        </svg>
+        <span class="nav-text">Premios</span>
+      </a>
+    </nav>
+
+  </div>
+</div>
+</body>
+</html>
