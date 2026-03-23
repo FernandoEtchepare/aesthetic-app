@@ -100,6 +100,19 @@ body { background: #ddd8cf; }
 .input-row-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .save-btn-area { padding: 0 20px 20px; }
 
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  display: inline-flex; align-items: center;
+  background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 20px; padding: 3px 5px; gap: 2px;
+  text-decoration: none;
+}
+.theme-toggle span {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+}
+.theme-toggle .tt-active { background: rgba(0,0,0,0.1); }
+
 /* ── INPUTS ── */
 .input-group label { color: var(--l-text-faint) !important; }
 input, select, textarea {
@@ -153,6 +166,10 @@ input::placeholder { color: var(--l-text-faint) !important; }
     <div class="profile-hero">
       <div class="profile-top">
         <span class="screen-title">Mi perfil</span>
+        <a href="05-perfil.html" class="theme-toggle" title="Ver tema oscuro">
+          <span class="tt-moon">🌙</span>
+          <span class="tt-sun tt-active">☀️</span>
+        </a>
       </div>
       <div class="profile-avatar-area">
         <div class="big-avatar">

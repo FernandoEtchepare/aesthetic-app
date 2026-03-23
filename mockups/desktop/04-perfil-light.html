@@ -95,6 +95,19 @@ body { padding: 48px 24px; background: #ddd8cf; }
 input, select, textarea { background: var(--l-input) !important; border-color: var(--l-border) !important; color: var(--l-text) !important; }
 input::placeholder { color: var(--l-text-faint) !important; }
 
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  display: inline-flex; align-items: center;
+  background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 20px; padding: 3px 5px; gap: 2px;
+  text-decoration: none;
+}
+.theme-toggle span {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+}
+.theme-toggle .tt-active { background: rgba(0,0,0,0.1); }
+
 /* ── GOLD BUTTON ── */
 .btn-gold { background: var(--l-gold) !important; color: #fff !important; }
 </style>
@@ -131,7 +144,13 @@ input::placeholder { color: var(--l-text-faint) !important; }
   </div>
   <div class="desktop-main">
     <div class="desktop-topbar">
-      <div><div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--l-text)">Mi <em style="font-style:italic;color:var(--l-gold)">perfil</em></div></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--l-text)">Mi <em style="font-style:italic;color:var(--l-gold)">perfil</em></div>
+        <a href="04-perfil.html" class="theme-toggle" title="Ver tema oscuro">
+          <span class="tt-moon">🌙</span>
+          <span class="tt-sun tt-active">☀️</span>
+        </a>
+      </div>
       <button class="btn-gold" style="width:auto;padding:10px 24px;font-size:0.62rem">Guardar cambios</button>
     </div>
     <div class="profile-layout">
