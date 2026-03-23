@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 28px 48px;
+  padding: calc(var(--status-bar) + 4px) 28px 48px;
   gap: 24px;
   background: var(--black);
 }
@@ -155,7 +155,6 @@
           <label>Email</label>
           <div class="input-row">
             <input type="email" placeholder="tu@email.com" value="fernando@email.com">
-            <span class="input-icon">✉</span>
           </div>
         </div>
         <div class="input-group">

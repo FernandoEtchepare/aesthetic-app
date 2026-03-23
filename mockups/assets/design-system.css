@@ -88,12 +88,13 @@ body {
 /* STATUS BAR */
 .status-bar {
   height: var(--status-bar);
-  background: var(--black);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 28px 0;
-  position: relative;
   z-index: 10;
 }
 
@@ -131,7 +132,7 @@ body {
 /* SCREEN */
 .screen {
   width: 100%;
-  height: calc(var(--screen-h) - var(--status-bar));
+  height: var(--screen-h);
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
