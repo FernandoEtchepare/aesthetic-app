@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Socios (Profesor Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.s-icon svg { color: var(--gold); opacity: 0.6; transition: opacity 0.2s; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { opacity: 1; }
+
+/* Filters */
+.filters-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.search-wrap { flex: 1; position: relative; }
+.search-wrap input { width: 100%; background: var(--black-card); border: 1px solid rgba(245,240,232,0.08); border-radius: 8px; color: var(--white); font-family: var(--font-body); font-size: 0.75rem; padding: 11px 16px 11px 40px; outline: none; }
+.search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--white-faint); }
+.filter-pill { padding: 8px 16px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: 1px solid rgba(245,240,232,0.1); background: transparent; color: var(--white-faint); font-family: var(--font-body); }
+.filter-pill.active { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.3); color: var(--gold); }
+.add-btn-d { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--gold); border: none; border-radius: 8px; font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); cursor: pointer; }
+
+/* Table */
+.table-header { display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 120px; gap: 0; padding: 8px 16px; border-bottom: 1px solid rgba(245,240,232,0.06); margin-bottom: 4px; }
+.th { font-size: 0.52rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-faint); }
+.member-row { display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 120px; gap: 0; background: var(--black-card); border: 1px solid rgba(245,240,232,0.04); border-radius: 10px; padding: 12px 16px; margin-bottom: 6px; align-items: center; cursor: pointer; transition: border-color 0.2s; }
+.member-row:hover { border-color: rgba(201,168,76,0.2); }
+.mem-cell { font-size: 0.68rem; color: var(--white-dim); }
+.mem-name-cell { display: flex; align-items: center; gap: 10px; }
+.mem-av { width: 34px; height: 34px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); flex-shrink: 0; position: relative; }
+.mem-av.online::after { content: ''; position: absolute; bottom: 1px; right: 1px; width: 8px; height: 8px; background: var(--success); border-radius: 50%; border: 1.5px solid var(--black-card); }
+.mem-name { font-size: 0.72rem; font-weight: 500; color: var(--white); margin-bottom: 1px; }
+.mem-email { font-size: 0.56rem; color: var(--white-faint); }
+.status-dot { display: inline-flex; align-items: center; gap: 5px; font-size: 0.6rem; }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-active { background: var(--success); }
+.dot-inactive { background: rgba(245,240,232,0.2); }
+.row-actions { display: flex; gap: 6px; }
+.row-btn { width: 28px; height: 28px; border-radius: 6px; background: rgba(245,240,232,0.04); border: 1px solid rgba(245,240,232,0.08); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.row-btn svg { color: var(--white-faint); }
+.row-btn:hover svg { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="mockup-label">03 — Socios · Profesor Desktop · 1280×800</div>
+<div class="desktop-frame">
+
+  <!-- SIDEBAR -->
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;">
+      <img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;">
+    </div>
+    <div class="sidebar-nav">
+      <a href="02-inicio.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <span class="s-text">Inicio</span>
+      </div></a>
+      <a href="03-socios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span class="s-text">Socios</span>
+      </div></a>
+      <a href="05-rutinas.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span>
+        <span class="s-text">Rutinas</span>
+      </div></a>
+      <a href="07-mensajes.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Mensajes</span>
+        <span style="margin-left:auto;background:#e74c3c;color:#fff;font-size:0.5rem;font-weight:700;padding:2px 6px;border-radius:10px;">3</span>
+      </div></a>
+      <a href="08-premios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>
+        <span class="s-text">Premios</span>
+      </div></a>
+    </div>
+    <div style="padding:20px 24px;border-top:1px solid rgba(245,240,232,0.05);margin-top:auto;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);flex-shrink:0;">CM</div>
+        <div><div style="font-size:0.68rem;font-weight:500;color:var(--white);">Carlos Méndez</div><div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;">PROFESOR</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white);">Mis <em style="font-style:italic;color:var(--gold);">socios</em></div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="font-size:0.6rem;color:var(--white-faint);">28 socios activos</span>
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);">CM</div>
+      </div>
+    </div>
+    <div class="desktop-content">
+
+      <div class="filters-bar">
+        <div class="search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Buscar socio..." value="">
+        </div>
+        <button class="filter-pill active">Todos</button>
+        <button class="filter-pill">Activos</button>
+        <button class="filter-pill">Sin rutina</button>
+        <button class="filter-pill">Vence pronto</button>
+        <button class="add-btn-d">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nuevo socio
+        </button>
+      </div>
+
+      <div class="table-header">
+        <div class="th">Nombre</div>
+        <div class="th">Plan</div>
+        <div class="th">Sesiones</div>
+        <div class="th">Asistencia</div>
+        <div class="th">Estado</div>
+        <div class="th">Acciones</div>
+      </div>
+
+      <a href="04-perfil-socio.html" style="display:contents;text-decoration:none;">
+        <div class="member-row">
+          <div class="mem-cell mem-name-cell"><div class="mem-av online">FE</div><div><div class="mem-name">Fernando Etchepare</div><div class="mem-email">fer@email.com</div></div></div>
+          <div class="mem-cell">Premium · Vence 22 abr</div>
+          <div class="mem-cell">42</div>
+          <div class="mem-cell" style="color:var(--success);">96%</div>
+          <div class="mem-cell"><span class="status-dot"><span class="dot dot-active"></span>Activo</span></div>
+          <div class="mem-cell row-actions">
+            <div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
+            <div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          </div>
+        </div>
+      </a>
+
+      <div class="member-row">
+        <div class="mem-cell mem-name-cell"><div class="mem-av online">MA</div><div><div class="mem-name">María Alvarado</div><div class="mem-email">maria@email.com</div></div></div>
+        <div class="mem-cell">Estándar · Vence 10 abr</div>
+        <div class="mem-cell">67</div>
+        <div class="mem-cell" style="color:var(--success);">100%</div>
+        <div class="mem-cell"><span class="status-dot"><span class="dot dot-active"></span>Activo</span></div>
+        <div class="mem-cell row-actions"><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div></div>
+      </div>
+
+      <div class="member-row">
+        <div class="mem-cell mem-name-cell"><div class="mem-av">LG</div><div><div class="mem-name">Lucas González</div><div class="mem-email">lucas@email.com</div></div></div>
+        <div class="mem-cell">Premium · Vence 5 may</div>
+        <div class="mem-cell">29</div>
+        <div class="mem-cell" style="color:var(--gold);">78%</div>
+        <div class="mem-cell"><span class="status-dot"><span class="dot dot-active"></span>Activo</span></div>
+        <div class="mem-cell row-actions"><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div></div>
+      </div>
+
+      <div class="member-row">
+        <div class="mem-cell mem-name-cell"><div class="mem-av online">SO</div><div><div class="mem-name">Sofía Romero</div><div class="mem-email">sofia@email.com</div></div></div>
+        <div class="mem-cell">Estándar · Vence 18 abr</div>
+        <div class="mem-cell">51</div>
+        <div class="mem-cell" style="color:var(--success);">98%</div>
+        <div class="mem-cell"><span class="status-dot"><span class="dot dot-active"></span>Activo</span></div>
+        <div class="mem-cell row-actions"><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div></div>
+      </div>
+
+      <div class="member-row">
+        <div class="mem-cell mem-name-cell"><div class="mem-av">NT</div><div><div class="mem-name">Nicolás Torres</div><div class="mem-email">nico@email.com</div></div></div>
+        <div class="mem-cell">Premium · Vence 2 abr</div>
+        <div class="mem-cell">12</div>
+        <div class="mem-cell" style="color:var(--error);">55%</div>
+        <div class="mem-cell"><span class="status-dot"><span class="dot" style="background:var(--gold);"></span>Sin rutina</span></div>
+        <div class="mem-cell row-actions"><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div></div>
+      </div>
+
+      <div class="member-row">
+        <div class="mem-cell mem-name-cell"><div class="mem-av">CB</div><div><div class="mem-name">Camila Bravo</div><div class="mem-email">cami@email.com</div></div></div>
+        <div class="mem-cell" style="color:var(--error);">Estándar · Vencido</div>
+        <div class="mem-cell">8</div>
+        <div class="mem-cell" style="color:var(--error);">40%</div>
+        <div class="mem-cell"><span class="status-dot"><span class="dot dot-inactive"></span>Inactivo</span></div>
+        <div class="mem-cell row-actions"><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="row-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

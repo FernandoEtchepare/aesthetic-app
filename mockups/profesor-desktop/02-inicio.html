@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Inicio Profesor (Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.s-icon svg { color: var(--gold); opacity: 0.6; transition: opacity 0.2s; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { opacity: 1; }
+
+/* Stats row */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--black-card);
+  border: 1px solid rgba(245,240,232,0.05);
+  border-radius: 12px;
+  padding: 20px;
+}
+.stat-card.gold { background: linear-gradient(135deg, #1a1208, #0d0d0a); border-color: rgba(201,168,76,0.2); }
+.sc-val { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.sc-lbl { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-faint); }
+.sc-trend { font-size: 0.6rem; color: var(--success); margin-top: 6px; }
+
+/* Two-col layout */
+.dash-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+.panel { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 20px; }
+.panel-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+/* Avatars row */
+.avatars-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.av-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.av-circle {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #1a1208, #111);
+  border: 1.5px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--gold);
+  position: relative;
+}
+.av-circle.online::after {
+  content: ''; position: absolute; top: 2px; right: 2px;
+  width: 10px; height: 10px; background: var(--success);
+  border-radius: 50%; border: 2px solid var(--black-card);
+}
+.av-name { font-size: 0.52rem; color: var(--white-dim); font-weight: 300; }
+
+/* Activity feed */
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.act-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(245,240,232,0.02); border-radius: 10px; }
+.act-icon { width: 34px; height: 34px; border-radius: 50%; background: rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.act-icon svg { color: var(--gold); }
+.act-text { font-size: 0.7rem; font-weight: 300; color: var(--white-dim); margin-bottom: 2px; }
+.act-time { font-size: 0.55rem; color: var(--white-faint); }
+
+/* Right panel: pending */
+.pending-list { display: flex; flex-direction: column; gap: 10px; }
+.pend-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(245,240,232,0.02); border-radius: 10px; border: 1px solid rgba(245,240,232,0.04); }
+.pend-av { width: 36px; height: 36px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.9rem; color: var(--gold); flex-shrink: 0; }
+.pend-name { font-size: 0.7rem; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+.pend-sub { font-size: 0.55rem; color: var(--white-faint); }
+.pend-action { margin-left: auto; }
+.pend-btn { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); cursor: pointer; padding: 5px 10px; border: 1px solid rgba(201,168,76,0.3); border-radius: 6px; background: transparent; font-family: var(--font-body); }
+</style>
+</head>
+<body>
+<div class="mockup-label">02 — Inicio · Profesor Desktop · 1280×800</div>
+<div class="desktop-frame">
+
+  <!-- SIDEBAR -->
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;">
+      <img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;">
+    </div>
+    <div class="sidebar-nav">
+      <a href="02-inicio.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <span class="s-text">Inicio</span>
+      </div></a>
+      <a href="03-socios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span class="s-text">Socios</span>
+      </div></a>
+      <a href="05-rutinas.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span>
+        <span class="s-text">Rutinas</span>
+      </div></a>
+      <a href="07-mensajes.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Mensajes</span>
+        <span style="margin-left:auto;background:#e74c3c;color:#fff;font-size:0.5rem;font-weight:700;padding:2px 6px;border-radius:10px;">3</span>
+      </div></a>
+      <a href="08-premios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>
+        <span class="s-text">Premios</span>
+      </div></a>
+    </div>
+    <div style="padding:20px 24px;border-top:1px solid rgba(245,240,232,0.05);margin-top:auto;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);flex-shrink:0;">CM</div>
+        <div><div style="font-size:0.68rem;font-weight:500;color:var(--white);">Carlos Méndez</div><div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;">PROFESOR</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white);">Buenos días, <em style="font-style:italic;color:var(--gold);">Carlos</em></div>
+        <div style="font-size:0.58rem;color:var(--white-faint);letter-spacing:0.1em;margin-top:2px;">Lunes 23 de marzo · 14 socios registrados hoy</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div style="position:relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span style="position:absolute;top:-4px;right:-4px;width:8px;height:8px;background:#e74c3c;border-radius:50%;border:2px solid var(--black);"></span>
+        </div>
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);">CM</div>
+      </div>
+    </div>
+    <div class="desktop-content">
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card gold">
+          <div class="sc-val">14</div>
+          <div class="sc-lbl">Socios hoy</div>
+          <div class="sc-trend">↑ 3 más que ayer</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">28</div>
+          <div class="sc-lbl">Total socios activos</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">8</div>
+          <div class="sc-lbl">Rutinas activas</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val">92%</div>
+          <div class="sc-lbl">Asistencia mensual</div>
+          <div class="sc-trend" style="color:var(--gold);">↑ +4% vs mes anterior</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- En el gimnasio ahora -->
+          <div class="panel">
+            <div class="panel-title">En el gimnasio ahora</div>
+            <div class="avatars-row">
+              <div class="av-item"><div class="av-circle online">FE</div><span class="av-name">Fernando</span></div>
+              <div class="av-item"><div class="av-circle online">MA</div><span class="av-name">María</span></div>
+              <div class="av-item"><div class="av-circle">LG</div><span class="av-name">Lucas</span></div>
+              <div class="av-item"><div class="av-circle online">SO</div><span class="av-name">Sofía</span></div>
+              <div class="av-item"><div class="av-circle">PA</div><span class="av-name">Pablo</span></div>
+              <div class="av-item"><div class="av-circle online">VR</div><span class="av-name">Valentina</span></div>
+              <div class="av-item"><div class="av-circle online">JL</div><span class="av-name">Julián</span></div>
+              <div class="av-item"><div class="av-circle">AN</div><span class="av-name">Ana</span></div>
+            </div>
+          </div>
+
+          <!-- Actividad reciente -->
+          <div class="panel">
+            <div class="panel-title">Actividad reciente</div>
+            <div class="activity-list">
+              <div class="act-item">
+                <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div><div class="act-text">Fernando completó su rutina de espalda</div><div class="act-time">hace 12 min</div></div>
+              </div>
+              <div class="act-item">
+                <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                <div><div class="act-text">María alcanzó 50 sesiones completadas</div><div class="act-time">hace 1h</div></div>
+              </div>
+              <div class="act-item">
+                <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <div><div class="act-text">Lucas te envió un mensaje</div><div class="act-time">hace 2h</div></div>
+              </div>
+              <div class="act-item">
+                <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+                <div><div class="act-text">Sofía lidera el ranking de asistencia este mes</div><div class="act-time">hace 3h</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: tareas pendientes -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="panel">
+            <div class="panel-title">Rutinas pendientes de asignar</div>
+            <div class="pending-list">
+              <div class="pend-item">
+                <div class="pend-av">NT</div>
+                <div><div class="pend-name">Nicolás Torres</div><div class="pend-sub">Sin rutina asignada · 3 días</div></div>
+                <div class="pend-action"><button class="pend-btn" onclick="location.href='06-crear-rutina.html'">Asignar</button></div>
+              </div>
+              <div class="pend-item">
+                <div class="pend-av">CB</div>
+                <div><div class="pend-name">Camila Bravo</div><div class="pend-sub">Rutina expirada · hace 1 sem</div></div>
+                <div class="pend-action"><button class="pend-btn" onclick="location.href='06-crear-rutina.html'">Renovar</button></div>
+              </div>
+              <div class="pend-item">
+                <div class="pend-av">RM</div>
+                <div><div class="pend-name">Rodrigo Molina</div><div class="pend-sub">Solicitó nueva rutina</div></div>
+                <div class="pend-action"><button class="pend-btn" onclick="location.href='06-crear-rutina.html'">Crear</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Mensajes sin responder</div>
+            <div class="pending-list">
+              <div class="pend-item">
+                <div class="pend-av">LG</div>
+                <div><div class="pend-name">Lucas González</div><div class="pend-sub">¿Puedo cambiar el día de piernas?</div></div>
+                <div class="pend-action"><button class="pend-btn" onclick="location.href='07-mensajes.html'">Ver</button></div>
+              </div>
+              <div class="pend-item">
+                <div class="pend-av">PA</div>
+                <div><div class="pend-name">Pablo Acosta</div><div class="pend-sub">Consulta sobre técnica de sentadilla</div></div>
+                <div class="pend-action"><button class="pend-btn" onclick="location.href='07-mensajes.html'">Ver</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

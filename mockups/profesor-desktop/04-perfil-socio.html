@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Perfil Socio (Profesor Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.s-icon svg { color: var(--gold); opacity: 0.6; transition: opacity 0.2s; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { opacity: 1; }
+
+.profile-layout { display: grid; grid-template-columns: 280px 1fr; gap: 20px; padding: 24px; }
+.left-col { display: flex; flex-direction: column; gap: 16px; }
+.right-col { display: flex; flex-direction: column; gap: 16px; }
+.pc { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 20px; }
+.pc-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.big-av { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,#1a1208,#0d0d0a); border: 2px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 2rem; color: var(--gold); margin: 0 auto 12px; }
+.p-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); text-align: center; margin-bottom: 4px; }
+.p-email { font-size: 0.6rem; color: var(--white-faint); text-align: center; margin-bottom: 12px; }
+.p-since { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat-mini { background: rgba(245,240,232,0.03); border: 1px solid rgba(245,240,232,0.05); border-radius: 8px; padding: 10px; text-align: center; }
+.stat-mini .sv { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); line-height: 1; }
+.stat-mini .sl { font-size: 0.5rem; color: var(--white-faint); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
+.action-btns { display: flex; flex-direction: column; gap: 8px; }
+.action-btn { display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 8px; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: 1px solid; }
+.action-btn.primary { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.action-btn.secondary { background: transparent; color: var(--gold); border-color: rgba(201,168,76,0.3); }
+.action-btn.ghost { background: transparent; color: var(--white-dim); border-color: rgba(245,240,232,0.1); }
+.action-btn svg { flex-shrink: 0; }
+
+/* Progress chart */
+.week-chart { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-items: flex-end; height: 80px; margin-top: 8px; }
+.bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+.bar { width: 100%; border-radius: 3px 3px 0 0; background: rgba(201,168,76,0.2); min-height: 4px; }
+.bar.done { background: var(--gold); }
+.bar-label { font-size: 0.48rem; color: var(--white-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Routine table */
+.r-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0; padding: 10px 12px; border-bottom: 1px solid rgba(245,240,232,0.04); align-items: center; }
+.r-row:last-child { border-bottom: none; }
+.r-header { background: rgba(245,240,232,0.03); border-radius: 8px 8px 0 0; }
+.r-th { font-size: 0.52rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-faint); }
+.r-td { font-size: 0.68rem; color: var(--white-dim); }
+</style>
+</head>
+<body>
+<div class="mockup-label">04 — Perfil Socio · Profesor Desktop · 1280×800</div>
+<div class="desktop-frame">
+
+  <!-- SIDEBAR -->
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;">
+      <img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;">
+    </div>
+    <div class="sidebar-nav">
+      <a href="02-inicio.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <span class="s-text">Inicio</span>
+      </div></a>
+      <a href="03-socios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span class="s-text">Socios</span>
+      </div></a>
+      <a href="05-rutinas.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span>
+        <span class="s-text">Rutinas</span>
+      </div></a>
+      <a href="07-mensajes.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Mensajes</span>
+      </div></a>
+      <a href="08-premios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>
+        <span class="s-text">Premios</span>
+      </div></a>
+    </div>
+    <div style="padding:20px 24px;border-top:1px solid rgba(245,240,232,0.05);margin-top:auto;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);flex-shrink:0;">CM</div>
+        <div><div style="font-size:0.68rem;font-weight:500;color:var(--white);">Carlos Méndez</div><div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;">PROFESOR</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="03-socios.html" style="color:var(--gold);font-size:0.65rem;font-weight:600;text-decoration:none;">← Socios</a>
+        <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white);">Fernando <em style="font-style:italic;color:var(--gold);">Etchepare</em></div>
+      </div>
+      <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);">CM</div>
+    </div>
+    <div class="profile-layout">
+      <div class="left-col">
+        <div class="pc">
+          <div class="big-av">FE</div>
+          <div class="p-name">Fernando Etchepare</div>
+          <div class="p-email">fer@email.com · +54 223 000-0000</div>
+          <div class="p-since"><span>★</span><span>Miembro desde Mar 2026</span></div>
+          <div class="stat-grid">
+            <div class="stat-mini"><div class="sv">42</div><div class="sl">Sesiones</div></div>
+            <div class="stat-mini"><div class="sv">18</div><div class="sl">Racha días</div></div>
+            <div class="stat-mini"><div class="sv">96%</div><div class="sl">Asistencia</div></div>
+            <div class="stat-mini"><div class="sv">Premium</div><div class="sl">Plan actual</div></div>
+          </div>
+        </div>
+        <div class="pc">
+          <div class="pc-title">Acciones rápidas</div>
+          <div class="action-btns">
+            <a href="06-crear-rutina.html" style="text-decoration:none;"><button class="action-btn primary" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+              Asignar rutina
+            </button></a>
+            <a href="07-mensajes.html" style="text-decoration:none;"><button class="action-btn secondary" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Enviar mensaje
+            </button></a>
+            <a href="08-premios.html" style="text-decoration:none;"><button class="action-btn ghost" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              Otorgar premio
+            </button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="pc">
+          <div class="pc-title">Progreso semanal</div>
+          <div class="week-chart">
+            <div class="bar-wrap"><div class="bar done" style="height:70%;"></div><span class="bar-label">L</span></div>
+            <div class="bar-wrap"><div class="bar done" style="height:100%;"></div><span class="bar-label">M</span></div>
+            <div class="bar-wrap"><div class="bar" style="height:20%;"></div><span class="bar-label">X</span></div>
+            <div class="bar-wrap"><div class="bar done" style="height:85%;"></div><span class="bar-label">J</span></div>
+            <div class="bar-wrap"><div class="bar done" style="height:90%;"></div><span class="bar-label">V</span></div>
+            <div class="bar-wrap"><div class="bar" style="height:15%;"></div><span class="bar-label">S</span></div>
+            <div class="bar-wrap"><div class="bar" style="height:10%;"></div><span class="bar-label">D</span></div>
+          </div>
+        </div>
+
+        <div class="pc">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <div class="pc-title" style="margin-bottom:0;">Rutina asignada</div>
+            <a href="06-crear-rutina.html" style="font-size:0.6rem;color:var(--gold);text-decoration:none;letter-spacing:0.05em;">Editar →</a>
+          </div>
+          <div class="r-row r-header">
+            <div class="r-th">Ejercicio</div><div class="r-th">Series</div><div class="r-th">Repeticiones</div><div class="r-th">Peso</div>
+          </div>
+          <div class="r-row"><div class="r-td">Peso muerto</div><div class="r-td">4</div><div class="r-td">8–10</div><div class="r-td">80 kg</div></div>
+          <div class="r-row"><div class="r-td">Jalón al pecho</div><div class="r-td">3</div><div class="r-td">10–12</div><div class="r-td">55 kg</div></div>
+          <div class="r-row"><div class="r-td">Remo con barra</div><div class="r-td">3</div><div class="r-td">10</div><div class="r-td">60 kg</div></div>
+          <div class="r-row"><div class="r-td">Dominadas</div><div class="r-td">3</div><div class="r-td">8</div><div class="r-td">Peso corporal</div></div>
+          <div class="r-row"><div class="r-td">Face pull</div><div class="r-td">3</div><div class="r-td">15</div><div class="r-td">20 kg</div></div>
+        </div>
+
+        <div class="pc">
+          <div class="pc-title">Membresía</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#1a1208,#0d0d0a);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:16px;">
+            <div>
+              <div style="font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Premium</div>
+              <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--white);">Aesthetic</div>
+              <div style="font-size:0.55rem;color:var(--white-faint);margin-top:3px;">Vence 22 abr 2026</div>
+            </div>
+            <span style="font-size:1.5rem;opacity:0.6;">🏆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

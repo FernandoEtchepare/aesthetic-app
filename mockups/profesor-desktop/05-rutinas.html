@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Rutinas (Profesor Desktop)</title>
+<link rel="stylesheet" href="../assets/design-system.css">
+<style>
+body { padding: 48px 24px; }
+.s-icon svg { color: var(--gold); opacity: 0.6; transition: opacity 0.2s; }
+.sidebar-item.active .s-icon svg, .sidebar-item:hover .s-icon svg { opacity: 1; }
+
+.routines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.rt-card { background: var(--black-card); border: 1px solid rgba(245,240,232,0.05); border-radius: 14px; padding: 20px; cursor: pointer; transition: border-color 0.2s; }
+.rt-card:hover { border-color: rgba(201,168,76,0.2); }
+.rt-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); border-radius: 6px; padding: 4px 10px; font-size: 0.52rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.rt-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.rt-desc { font-size: 0.62rem; font-weight: 300; color: var(--white-faint); line-height: 1.6; margin-bottom: 14px; }
+.rt-meta { display: flex; gap: 16px; margin-bottom: 14px; }
+.rt-meta-item { display: flex; align-items: center; gap: 5px; font-size: 0.58rem; color: var(--white-faint); }
+.rt-meta-item svg { color: var(--gold); opacity: 0.7; }
+.rt-members { display: flex; align-items: center; gap: -4px; }
+.rt-av { width: 24px; height: 24px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1.5px solid var(--black-card); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.6rem; color: var(--gold); margin-right: -6px; }
+.rt-av-count { font-size: 0.55rem; color: var(--white-faint); margin-left: 14px; }
+.rt-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(245,240,232,0.05); }
+.rt-btn { flex: 1; padding: 8px; border-radius: 7px; font-family: var(--font-body); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: 1px solid; }
+.rt-btn.primary { background: rgba(201,168,76,0.1); color: var(--gold); border-color: rgba(201,168,76,0.2); }
+.rt-btn.ghost { background: transparent; color: var(--white-faint); border-color: rgba(245,240,232,0.1); }
+
+/* New routine card */
+.rt-card.new-card { border: 1px dashed rgba(201,168,76,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-height: 200px; }
+.new-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; }
+.new-icon svg { color: var(--gold); }
+.new-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--white-faint); }
+.new-sub { font-size: 0.58rem; color: var(--white-faint); opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="mockup-label">05 — Rutinas · Profesor Desktop · 1280×800</div>
+<div class="desktop-frame">
+
+  <!-- SIDEBAR -->
+  <div class="desktop-sidebar">
+    <div style="padding:0 24px 20px;border-bottom:1px solid rgba(245,240,232,0.05);margin-bottom:20px;">
+      <img src="../assets/logo-nav.png" alt="Aesthetic Gym" style="width:52px;height:52px;border-radius:50%;display:block;">
+    </div>
+    <div class="sidebar-nav">
+      <a href="02-inicio.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <span class="s-text">Inicio</span>
+      </div></a>
+      <a href="03-socios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span class="s-text">Socios</span>
+      </div></a>
+      <a href="05-rutinas.html" style="display:contents;text-decoration:none;"><div class="sidebar-item active">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span>
+        <span class="s-text">Rutinas</span>
+      </div></a>
+      <a href="07-mensajes.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="s-text">Mensajes</span>
+      </div></a>
+      <a href="08-premios.html" style="display:contents;text-decoration:none;"><div class="sidebar-item">
+        <span class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>
+        <span class="s-text">Premios</span>
+      </div></a>
+    </div>
+    <div style="padding:20px 24px;border-top:1px solid rgba(245,240,232,0.05);margin-top:auto;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);flex-shrink:0;">CM</div>
+        <div><div style="font-size:0.68rem;font-weight:500;color:var(--white);">Carlos Méndez</div><div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;">PROFESOR</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="desktop-main">
+    <div class="desktop-topbar">
+      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--white);">Mis <em style="font-style:italic;color:var(--gold);">rutinas</em></div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="font-size:0.6rem;color:var(--white-faint);">8 rutinas activas</span>
+        <a href="06-crear-rutina.html" style="text-decoration:none;"><button style="display:flex;align-items:center;gap:8px;padding:10px 18px;background:var(--gold);border:none;border-radius:8px;font-family:var(--font-body);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Nueva rutina</button></a>
+      </div>
+    </div>
+    <div class="desktop-content">
+      <div class="routines-grid">
+
+        <div class="rt-card">
+          <div class="rt-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Hipertrofia</div>
+          <div class="rt-name">Empuje / Jalón / Piernas</div>
+          <div class="rt-desc">Rutina 3 días con enfoque en volumen muscular y progresión de cargas.</div>
+          <div class="rt-meta">
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 días / sem</div>
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>Intermedio</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="rt-av">FE</div><div class="rt-av">MA</div><div class="rt-av">LG</div>
+            <span class="rt-av-count">+3 socios</span>
+          </div>
+          <div class="rt-actions">
+            <button class="rt-btn primary" onclick="location.href='06-crear-rutina.html'">Editar</button>
+            <button class="rt-btn ghost">Duplicar</button>
+          </div>
+        </div>
+
+        <div class="rt-card">
+          <div class="rt-badge" style="background:rgba(74,158,107,0.08);border-color:rgba(74,158,107,0.15);color:#4a9e6b;">Definición</div>
+          <div class="rt-name">Full Body Cutting</div>
+          <div class="rt-desc">Rutina de cuerpo completo con cardio integrado para definición muscular.</div>
+          <div class="rt-meta">
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 días / sem</div>
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/></svg>Avanzado</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="rt-av">SO</div><div class="rt-av">NT</div>
+            <span class="rt-av-count">+1 socio</span>
+          </div>
+          <div class="rt-actions">
+            <button class="rt-btn primary" onclick="location.href='06-crear-rutina.html'">Editar</button>
+            <button class="rt-btn ghost">Duplicar</button>
+          </div>
+        </div>
+
+        <div class="rt-card">
+          <div class="rt-badge" style="background:rgba(52,152,219,0.08);border-color:rgba(52,152,219,0.15);color:#3498db;">Fuerza</div>
+          <div class="rt-name">Powerlifting Base</div>
+          <div class="rt-desc">Periodización lineal enfocada en sentadilla, press banca y peso muerto.</div>
+          <div class="rt-meta">
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 días / sem</div>
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/></svg>Principiante</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="rt-av">CB</div>
+            <span class="rt-av-count">1 socio</span>
+          </div>
+          <div class="rt-actions">
+            <button class="rt-btn primary" onclick="location.href='06-crear-rutina.html'">Editar</button>
+            <button class="rt-btn ghost">Duplicar</button>
+          </div>
+        </div>
+
+        <div class="rt-card">
+          <div class="rt-badge">Cardio</div>
+          <div class="rt-name">HIIT & Movilidad</div>
+          <div class="rt-desc">Circuitos de alta intensidad combinados con trabajo de movilidad articular.</div>
+          <div class="rt-meta">
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 días / sem</div>
+            <div class="rt-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/></svg>Todos los niveles</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="rt-av">PA</div><div class="rt-av">VR</div><div class="rt-av">AN</div>
+            <span class="rt-av-count">+4 socios</span>
+          </div>
+          <div class="rt-actions">
+            <button class="rt-btn primary" onclick="location.href='06-crear-rutina.html'">Editar</button>
+            <button class="rt-btn ghost">Duplicar</button>
+          </div>
+        </div>
+
+        <a href="06-crear-rutina.html" style="display:contents;text-decoration:none;">
+          <div class="rt-card new-card">
+            <div class="new-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="new-label">Nueva rutina</div>
+            <div class="new-sub">Crear rutina personalizada</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
